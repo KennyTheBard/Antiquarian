@@ -26,6 +26,8 @@
 - [ ] Sprite trees
 - [ ] Configuration and saves loading
 - [ ] HUD and windows
+- [ ] Main character design
+- [ ] Monster design
 
 
 ### Developing (modules and engine tests)
@@ -43,6 +45,19 @@
 - [ ] Complete the Game World Scene
 - [ ] Complete the HUD
 
+
+### Animation and Art
+- [ ] Main character
+- [ ] Monster
+- [ ] Items
+- [ ] Tile textures
+- [ ] Props
+- [ ] NPCs
+- [ ] Windows style
+- [ ] Menu buttons
+- [ ] Background
+- [ ] Water animation tile
+- [ ] Logo
 
 ### Extending (improve modules)
     TBA
