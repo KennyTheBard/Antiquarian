@@ -7,15 +7,15 @@
 
 [node name="Entity" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 438.596, 101.784 )
+position = Vector2( 679.596, 125.784 )
 
 [node name="Entity8" parent="." index="1" instance=ExtResource( 1 )]
 
-position = Vector2( 162.854, 172.107 )
+position = Vector2( 585.854, 182.107 )
 
 [node name="Entity4" parent="." index="2" instance=ExtResource( 1 )]
 
-position = Vector2( 893.848, 103.635 )
+position = Vector2( 501.848, 99.635 )
 
 [node name="Entity7" parent="." index="3" instance=ExtResource( 1 )]
 
@@ -23,19 +23,19 @@ position = Vector2( 666.222, 236.879 )
 
 [node name="Entity2" parent="." index="4" instance=ExtResource( 1 )]
 
-position = Vector2( 334.962, 488.563 )
+position = Vector2( 569.962, 311.563 )
 
 [node name="Entity5" parent="." index="5" instance=ExtResource( 1 )]
 
-position = Vector2( 88.8297, 423.792 )
+position = Vector2( 530.83, 420.792 )
 
 [node name="Entity3" parent="." index="6" instance=ExtResource( 1 )]
 
-position = Vector2( 862.388, 421.941 )
+position = Vector2( 740.388, 335.941 )
 
 [node name="Entity6" parent="." index="7" instance=ExtResource( 1 )]
 
-position = Vector2( 575.542, 523.725 )
+position = Vector2( 643.542, 398.725 )
 
 [node name="Player" parent="." index="8" instance=ExtResource( 2 )]
 
