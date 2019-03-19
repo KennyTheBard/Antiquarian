@@ -4,7 +4,7 @@
 ### Planning (final state vision)
 - [x] TODO list
 - [ ] Main Menu
-- [ ] Items
+- [x] Items
 - [ ] Weapons
 - [ ] NPCs
 - [ ] Monster behavior
@@ -16,14 +16,14 @@
 
 ### Designing (object interfaces)
 - [ ] Monster AI
-- [ ] Items implementation
+- [x] Items implementation
 - [ ] Text rendering
 - [ ] Interactions
 - [ ] Resources loading
-- [ ] Damage & collision
-- [ ] Control inputs
+- [x] Damage & collision
+- [x] Control inputs
 - [ ] Sound system
-- [ ] Sprite trees
+- [x] Sprite trees
 - [ ] Configuration and saves loading
 - [ ] HUD and windows
 - [ ] Main character design
