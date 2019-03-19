@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 17 ]
+"values": [ 0, 0 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -43,7 +43,7 @@ tracks/0/keys = {
 "values": [ 0, 11 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 resource_name = "skel idle"
 length = 1.0
@@ -62,9 +62,8 @@ tracks/0/keys = {
 "values": [ 0, 10 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
-resource_name = "skel walk"
 length = 1.0
 loop = true
 step = 0.1
@@ -101,7 +100,6 @@ __meta__ = {
 
 texture = ExtResource( 2 )
 hframes = 18
-frame = 1
 _sections_unfolded = [ "Animation", "Offset", "Transform" ]
 
 [node name="attackanim" type="AnimationPlayer" parent="attack" index="0"]
@@ -147,8 +145,8 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-"anims/skel idle" = SubResource( 4 )
-"anims/skel walk" = SubResource( 3 )
+"anims/skel idle" = SubResource( 3 )
+"anims/skel walk" = SubResource( 4 )
 blend_times = [  ]
 
 
