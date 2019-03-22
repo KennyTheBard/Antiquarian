@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://bg.jpg" type="Texture" id=3]
+[ext_resource path="res://bg2.jpg" type="Texture" id=4]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Button" type="TextureButton" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 2 )
+
+[node name="TradePopupMenu" type="PopupMenu" parent="."]
+margin_left = -61.0
+margin_top = -47.0
+margin_right = -41.0
+margin_bottom = -27.0
+
+[node name="Sprite" type="Sprite" parent="TradePopupMenu"]
+position = Vector2( 456.909, 279.792 )
+scale = Vector2( 0.14539, 0.15919 )
+texture = ExtResource( 3 )
+
+[node name="TextureButton" type="TextureButton" parent="TradePopupMenu"]
+margin_left = 304.668
+margin_top = 103.374
+margin_right = 368.668
+margin_bottom = 169.374
+texture_normal = ExtResource( 2 )
+
+[node name="NPCPopupMenu" type="PopupMenu" parent="."]
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="Sprite2" type="Sprite" parent="NPCPopupMenu"]
+position = Vector2( 418.213, 277.781 )
+scale = Vector2( 0.0791185, 0.0932374 )
+texture = ExtResource( 4 )
+
+[node name="TextureButton2" type="TextureButton" parent="NPCPopupMenu"]
+margin_left = 258.472
+margin_top = 343.793
+margin_right = 322.472
+margin_bottom = 409.793
+texture_normal = ExtResource( 2 )
+
+[connection signal="pressed" from="Button" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="TradePopupMenu/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="NPCPopupMenu/TextureButton2" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="NPCPopupMenu/TextureButton2" to="." method="_on_TextureButton2_pressed"]
