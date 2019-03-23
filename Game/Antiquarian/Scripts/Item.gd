@@ -11,5 +11,9 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func drop():
+
+# drop the item to the given position in the game world
+func drop(manager, pos):
+	self.position = pos
+	manager.add(self)
 	pass

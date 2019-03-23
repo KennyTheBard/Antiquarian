@@ -12,12 +12,15 @@ func _ready():
 #	pass
 
 
+# add the object into the managed game world
 func add(object):
-	if object is not GameObject:
-		
+	objects[object.id] = object
+	add_child(object)
 	pass
 
 
+# delete the object from the managed game world
 func delete(object):
-	
+	objects.erase(object.id)
+	remove_child(object)
 	pass

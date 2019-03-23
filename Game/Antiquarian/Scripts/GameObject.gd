@@ -10,5 +10,11 @@ func _ready():
 #func _process(delta):
 #	pass
 
+
+# interact with the game object depending on given flags
 func interact(flags):
+	# InteractionNode is responsible to have the interaction
+	# logic script attached to itself
+	if $InteractionNode:
+		$InteractionNode.interact(flags)
 	pass
