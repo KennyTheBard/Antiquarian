@@ -1,0 +1,107 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://img/menu/wallpaper.jpg" type="Texture" id=2]
+[ext_resource path="res://img/menu/title.png" type="Texture" id=3]
+[ext_resource path="res://img/menu/buttons/continue.png" type="Texture" id=4]
+[ext_resource path="res://img/menu/buttons/new_game.png" type="Texture" id=5]
+[ext_resource path="res://img/menu/buttons/options _big.png" type="Texture" id=6]
+[ext_resource path="res://Exit.gd" type="Script" id=7]
+[ext_resource path="res://img/menu/buttons/exit.png" type="Texture" id=8]
+[ext_resource path="res://img/menu/buttons/exit_question.png" type="Texture" id=9]
+[ext_resource path="res://img/menu/buttons/yes.png" type="Texture" id=10]
+[ext_resource path="res://img/menu/buttons/no.png" type="Texture" id=11]
+
+[sub_resource type="ImageTexture" id=1]
+
+[sub_resource type="ImageTexture" id=2]
+
+[sub_resource type="ImageTexture" id=3]
+
+[sub_resource type="ImageTexture" id=4]
+
+[sub_resource type="AnimatedTexture" id=5]
+
+[sub_resource type="AnimatedTexture" id=6]
+
+[node name="Menu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="wallpaper" type="Sprite" parent="."]
+scale = Vector2( 0.533747, 0.51685 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="title" type="Sprite" parent="."]
+position = Vector2( 510.771, 177.659 )
+texture = ExtResource( 3 )
+
+[node name="continue" type="TextureButton" parent="."]
+margin_left = 429.343
+margin_top = 277.593
+margin_right = 591.343
+margin_bottom = 322.593
+shortcut_in_tooltip = false
+texture_normal = ExtResource( 4 )
+texture_hover = SubResource( 1 )
+
+[node name="new_game" type="TextureButton" parent="."]
+margin_left = 420.09
+margin_top = 338.663
+margin_right = 612.09
+margin_bottom = 400.663
+texture_normal = ExtResource( 5 )
+texture_hover = SubResource( 2 )
+
+[node name="options" type="TextureButton" parent="."]
+margin_left = 442.298
+margin_top = 403.435
+margin_right = 580.298
+margin_bottom = 463.435
+texture_normal = ExtResource( 6 )
+texture_hover = SubResource( 3 )
+
+[node name="Exit" type="Node" parent="."]
+script = ExtResource( 7 )
+
+[node name="exit" type="TextureButton" parent="Exit"]
+margin_left = 473.758
+margin_top = 466.356
+margin_right = 552.758
+margin_bottom = 514.356
+texture_normal = ExtResource( 8 )
+texture_hover = SubResource( 4 )
+
+[node name="exit_dialog" type="PopupDialog" parent="Exit"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="exit_wallpaper" type="Sprite" parent="Exit/exit_dialog"]
+position = Vector2( 0.582031, -0.291084 )
+scale = Vector2( 0.531959, 0.518809 )
+texture = ExtResource( 2 )
+centered = false
+
+[node name="exit_question" type="Sprite" parent="Exit/exit_dialog"]
+position = Vector2( 509.322, 285.601 )
+texture = ExtResource( 9 )
+
+[node name="exit_yes" type="TextureButton" parent="Exit/exit_dialog"]
+margin_left = 433.162
+margin_top = 352.241
+margin_right = 496.162
+margin_bottom = 393.241
+texture_normal = ExtResource( 10 )
+texture_hover = SubResource( 5 )
+
+[node name="exit_no" type="TextureButton" parent="Exit/exit_dialog"]
+margin_left = 545.022
+margin_top = 357.002
+margin_right = 586.022
+margin_bottom = 397.002
+texture_normal = ExtResource( 11 )
+texture_hover = SubResource( 6 )
+
+[connection signal="pressed" from="Exit/exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Exit/exit_dialog/exit_yes" to="Exit" method="_on_exit_yes_pressed"]
+[connection signal="pressed" from="Exit/exit_dialog/exit_no" to="Exit" method="_on_exit_no_pressed"]
