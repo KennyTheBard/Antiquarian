@@ -2,7 +2,7 @@ extends Node2D
 
 # how many sprites have to be loaded
 var tilemap_size = 5
-var tile_size = Vector2()
+var tile_size = Vector2(50, 50)
 var shift_border = 2
 
 # possible types of tiles to be cloned
@@ -23,26 +23,19 @@ var xx = 0
 var yy = 0
 
 # evidence if tiles where shifted or not
-var shifted = false
+var shifted = true
+
+# flag to activate the proccess function
+var active = false
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate_tilemap()
-	
-	# generate map
-#	for x in range(100):
-#		gamemap.append([])
-#		for y in range(100):
-#			gamemap[x].append(1)
 			
 	for i in range(tilemap_size):
 		for j in range(tilemap_size):
 			add_child(tilemap[i][j])
-	
-	tile_size = tilemap[0][0].texture.get_size()
-	
-	update_tiles()
 	
 	xx = (x + tilemap_size * tile_size.x) / 2
 	yy = (y + tilemap_size * tile_size.y) / 2
@@ -51,6 +44,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not active:
+		pass
+	
 	var speed = 120
 	if Input.is_key_pressed(KEY_W):
 		yy -= delta * speed
@@ -87,7 +83,9 @@ func solve_shiftage():
 func update_tiles():
 	for i in range(tilemap_size):
 		for j in range(tilemap_size):
-			var size = tilemap[i][j].texture.get_size()
+			tilemap[i][j].texture = tiles_types[gamemap[i][j]]
+			var size = tile_size
+			tilemap[i][j].scale = Vector2(512, 512) / tilemap[0][0].texture.get_size()
 			tilemap[i][j].position.y = y + i * size.y
 			tilemap[i][j].position.x = x + j * size.x
 	shifted = false
