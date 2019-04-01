@@ -85,7 +85,12 @@ func update_tiles():
 		for j in range(tilemap_size):
 			tilemap[i][j].texture = tiles_types[gamemap[i][j]]
 			var size = tile_size
-			tilemap[i][j].scale = Vector2(512, 512) / tilemap[0][0].texture.get_size()
+			var scale = tilemap[i][j].get_scale()
+			
+			scale.x = 0.1024
+			scale.y = 0.1024
+			
+			tilemap[i][j].set_scale(scale)
 			tilemap[i][j].position.y = y + i * size.y
 			tilemap[i][j].position.x = x + j * size.x
 	shifted = false
