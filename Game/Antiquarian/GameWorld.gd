@@ -19,7 +19,7 @@ func create_world(world_seed):
 	seed(world_seed)
 	
 	var world = []
-	var size = 10
+	var size = 100
 	for i in range(0, size - 1):
 		world.append([])
 		for j in range(0, size - 1):
@@ -39,7 +39,7 @@ func create_world(world_seed):
 
 	var zones = []
 	var zones_types = []
-	var num_zones = size #+ (randi() % size / 20) * sign(randi() % 3 - 1)
+	var num_zones = size * 10 #+ (randi() % size / 20) * sign(randi() % 3 - 1)
 	for i in range(num_zones):
 		#x = randi() % (size - 21) + 10
 		#y = randi() % (size - 21) + 10

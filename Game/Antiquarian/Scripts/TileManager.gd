@@ -1,8 +1,16 @@
 extends Node2D
 
-# how many sprites have to be loaded
+# the size a tile texture has to be scaled to
+var tile_size = Vector2(75, 75)
+
+# how many shifts were made in each direction
+var shifts = Vector2(0, 0)
+
+# size of the tilemap square
 var tilemap_size = 5
-var tile_size = Vector2(50, 50)
+
+# how close to the border of the tilemap has the
+# player to get in order to trigger a shift
 var shift_border = 2
 
 # possible types of tiles to be cloned
@@ -83,16 +91,11 @@ func solve_shiftage():
 func update_tiles():
 	for i in range(tilemap_size):
 		for j in range(tilemap_size):
-			tilemap[i][j].texture = tiles_types[gamemap[i][j]]
-			var size = tile_size
-			var scale = tilemap[i][j].get_scale()
-			
-			scale.x = 0.1024
-			scale.y = 0.1024
-			
-			tilemap[i][j].set_scale(scale)
-			tilemap[i][j].position.y = y + i * size.y
-			tilemap[i][j].position.x = x + j * size.x
+			tilemap[i][j].texture = tiles_types[gamemap[i + shifts.y][j + shifts.x]]
+			var size = tilemap[i][j].texture.get_size()	
+			tilemap[i][j].set_scale(tile_size / size)
+			tilemap[i][j].position.y = y + i * tile_size.y
+			tilemap[i][j].position.x = x + j * tile_size.x
 	shifted = false
 	pass
 
@@ -115,12 +118,14 @@ func vertical_shift(direction):
 		tilemap.push_front(tilemap.pop_back())
 		
 		y -= tile_size.y
+		shifts.y += -1
 		shifted = true
 		
 	else:
 		tilemap.push_back(tilemap.pop_front())
 		
 		y += tile_size.y
+		shifts.y += 1
 		shifted = true
 		
 	pass
@@ -135,6 +140,7 @@ func horizontal_shift(direction):
 			row.push_front(row.pop_back())
 			
 		x += tile_size.x
+		shifts.x += 1
 		shifted = true
 		
 	else:
@@ -142,6 +148,7 @@ func horizontal_shift(direction):
 			row.push_back(row.pop_front())
 			
 		x -= tile_size.x
+		shifts.x += -1
 		shifted = true
 		
 	pass
