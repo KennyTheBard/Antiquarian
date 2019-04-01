@@ -21,7 +21,7 @@ func create_world(world_seed):
 	seed(world_seed)
 	
 	# prepare the world map
-	var size = 100
+	var size = 30
 	var world = []
 	for i in range(0, size - 1):
 		world.append([])
@@ -61,8 +61,8 @@ func create_world(world_seed):
 		zones_types.append(0)
 	
 	# fill up the empty spaces
-	for i in range(0, size - 1):
-		for j in range(0, size - 1):
+	for i in range(size - 1):
+		for j in range(size - 1):
 			var min_dist = size * size * size * size
 			var min_val = 0
 	
@@ -79,5 +79,18 @@ func create_world(world_seed):
 	$TileManager.gamemap = world
 	$TileManager.tiles_types = terrain
 	$TileManager.active = true
+	
+	
+	# add props to the game world
+	for i in range(size - 1):
+		for j in range(size - 1):
+			var chance = randi() % 100
+			
+			if chance > 80 and not world[i][j] == 0:
+				var prop = load("res://Nodes/Prop.tscn").instance()
+				prop.get_node("./Sprite").texture = load("res://Assets/tree.png")
+				prop.position = Vector2(i * 75, j * 75)
+				prop.get_node("./Sprite").set_scale(Vector2(100, 100) / prop.get_node("./Sprite").texture.get_size())
+				$ObjectManager.add(prop)
 	
 	pass
