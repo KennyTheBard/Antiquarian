@@ -45,8 +45,8 @@ func _ready():
 		for j in range(tilemap_size):
 			add_child(tilemap[i][j])
 	
-	xx = (x + tilemap_size * tile_size.x) / 2
-	yy = (y + tilemap_size * tile_size.y) / 2
+#	xx = (x + tilemap_size * tile_size.x) / 2
+#	yy = (y + tilemap_size * tile_size.y) / 2
 	
 	pass # Replace with function body.
 
