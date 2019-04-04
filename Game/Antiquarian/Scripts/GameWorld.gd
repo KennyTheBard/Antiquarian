@@ -1,5 +1,8 @@
 extends Node2D
 
+# the size a tile texture has to be scaled to
+var tile_size = Vector2(75, 75)
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	create_world(null)
@@ -76,28 +79,35 @@ func create_world(world_seed):
 			world[i][j] = min_val
 	
 	# set up the tile manager
-	$TileManager.gamemap = world
-	$TileManager.tiles_types = terrain
-	$TileManager.active = true
-	
-	
-	# add props to the game world
 	for i in range(size):
 		for j in range(size):
-				var chance = randi() % 100
-				
-				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
-					var prop = load("res://Nodes/Prop.tscn").instance()
-					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
-					if world[j][i] == 1:
-						prop.get_node("./Sprite").texture = load("res://Assets/tree.png")
-	#					prop.get_node("./Sprite").set_scale(Vector2(75, 75) / prop.get_node("./Sprite").texture.get_size())
-	
-					else:
-						prop.get_node("./Sprite").texture = load("res://Assets/rock.png")
-	#					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
-					prop.position = Vector2(i * 75, j * 75  + 30)
-	
-					$ObjectManager.add(prop)
+			var tile = load("res://Nodes/Tile.tscn").instance()
+			tile.get_node(".").texture = terrain[world[i][j]]
+			tile.get_node(".").set_scale(tile_size / tile.get_node("./").texture.get_size())
+			tile.position = Vector2(i, j) * tile_size + Vector2(0, 30)
+			$TileManager.add_child(tile)
+#	$TileManager.gamemap = world
+#	$TileManager.tiles_types = terrain
+#	$TileManager.active = true
+#
+#
+#	# add props to the game world
+#	for i in range(size):
+#		for j in range(size):
+#				var chance = randi() % 100
+#
+#				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
+#					var prop = load("res://Nodes/Prop.tscn").instance()
+#					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
+#					if world[j][i] == 1:
+#						prop.get_node("./Sprite").texture = load("res://Assets/tree.png")
+#	#					prop.get_node("./Sprite").set_scale(Vector2(75, 75) / prop.get_node("./Sprite").texture.get_size())
+#
+#					else:
+#						prop.get_node("./Sprite").texture = load("res://Assets/rock.png")
+#	#					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
+#					prop.position = Vector2(i * 75, j * 75  + 30)
+#
+#					$ObjectManager.add(prop)
 	
 	pass
