@@ -2,6 +2,6 @@
 
 [ext_resource path="res://Scripts/TileManager.gd" type="Script" id=1]
 
-[node name="TileManager" type="Node2D"]
+[node name="TileManager" type="Spatial"]
 script = ExtResource( 1 )
 

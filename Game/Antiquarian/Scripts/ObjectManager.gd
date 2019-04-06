@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 
 # dictionary of all active objects with their ID as key
 var objects = {}

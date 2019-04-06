@@ -1,4 +1,8 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
 
-[node name="Tile" type="Sprite"]
+[ext_resource path="res://Assets/forest_turf.png" type="Texture" id=1]
+
+[node name="Tile" type="Sprite3D"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-008, 1, 0, -1, -4.37114e-008, 0, 0, 0 )
+texture = ExtResource( 1 )
 

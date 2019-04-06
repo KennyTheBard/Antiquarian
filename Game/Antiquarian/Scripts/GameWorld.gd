@@ -1,7 +1,7 @@
-extends Node2D
+extends Spatial
 
 # the size a tile texture has to be scaled to
-var tile_size = Vector2(75, 75)
+var tile_size = Vector3(75, 0, 75)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -24,7 +24,7 @@ func create_world(world_seed):
 	seed(world_seed)
 	
 	# prepare the world map
-	var size = 50
+	var size = 30
 	var world = []
 	for i in range(0, size):
 		world.append([])
@@ -83,8 +83,8 @@ func create_world(world_seed):
 		for j in range(size):
 			var tile = load("res://Nodes/Tile.tscn").instance()
 			tile.get_node(".").texture = terrain[world[i][j]]
-			tile.get_node(".").set_scale(tile_size / tile.get_node("./").texture.get_size())
-			tile.position = Vector2(i, j) * tile_size + Vector2(0, 30)
+			tile.get_node(".").scale = tile_size / Vector3(tile.get_node("./").texture.get_size().x, 0, tile.get_node("./").texture.get_size().y)
+			tile.translation = Vector3(i, 0, j) * tile_size + Vector3(0, 0, 30)
 			$TileManager.add_child(tile)
 #	$TileManager.gamemap = world
 #	$TileManager.tiles_types = terrain

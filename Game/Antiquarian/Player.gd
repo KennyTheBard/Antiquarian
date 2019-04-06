@@ -1,4 +1,4 @@
-extends Node2D
+extends Spatial
 
 # movement speed
 var speed = 250
@@ -26,23 +26,23 @@ func _process(delta):
 	
 	# movement controls
 	if Input.is_key_pressed(KEY_W):
-		position.y -= speed * delta
+		translation.z -= speed * delta
 		
 	if Input.is_key_pressed(KEY_S):
-		position.y += speed * delta
+		translation.z += speed * delta
 		
 	if Input.is_key_pressed(KEY_A):
-		position.x -= speed * delta
+		translation.x -= speed * delta
 		
 	if Input.is_key_pressed(KEY_D):
-		position.x += speed * delta
+		translation.x += speed * delta
 		
 	pass
 
 
 func distance_comparition(a, b):
-	return position.distance_squared_to(a.position) < \
-	position.distance_squared_to(b.position)
+	return translation.distance_squared_to(a.translation) < \
+	translation.distance_squared_to(b.translation)
 
 
 func _physics_process(delta):
