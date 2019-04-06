@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Menu.gd" type="Script" id=1]
 [ext_resource path="res://img/menu/wallpaper.jpg" type="Texture" id=2]
@@ -6,11 +6,13 @@
 [ext_resource path="res://img/menu/buttons/continue.png" type="Texture" id=4]
 [ext_resource path="res://img/menu/buttons/new_game.png" type="Texture" id=5]
 [ext_resource path="res://img/menu/buttons/options _big.png" type="Texture" id=6]
-[ext_resource path="res://Exit.gd" type="Script" id=7]
-[ext_resource path="res://img/menu/buttons/exit.png" type="Texture" id=8]
+[ext_resource path="res://img/menu/buttons/exit.png" type="Texture" id=7]
+[ext_resource path="res://Exit.gd" type="Script" id=8]
 [ext_resource path="res://img/menu/buttons/exit_question.png" type="Texture" id=9]
 [ext_resource path="res://img/menu/buttons/yes.png" type="Texture" id=10]
 [ext_resource path="res://img/menu/buttons/no.png" type="Texture" id=11]
+[ext_resource path="res://Options.gd" type="Script" id=12]
+[ext_resource path="res://img/Options/wallpaper.jpg" type="Texture" id=13]
 
 [sub_resource type="ImageTexture" id=1]
 
@@ -61,16 +63,16 @@ margin_bottom = 463.435
 texture_normal = ExtResource( 6 )
 texture_hover = SubResource( 3 )
 
-[node name="Exit" type="Node" parent="."]
-script = ExtResource( 7 )
-
-[node name="exit" type="TextureButton" parent="Exit"]
+[node name="exit" type="TextureButton" parent="."]
 margin_left = 473.758
 margin_top = 466.356
 margin_right = 552.758
 margin_bottom = 514.356
-texture_normal = ExtResource( 8 )
+texture_normal = ExtResource( 7 )
 texture_hover = SubResource( 4 )
+
+[node name="Exit" type="Node" parent="."]
+script = ExtResource( 8 )
 
 [node name="exit_dialog" type="PopupDialog" parent="Exit"]
 margin_right = 40.0
@@ -102,6 +104,34 @@ margin_bottom = 397.002
 texture_normal = ExtResource( 11 )
 texture_hover = SubResource( 6 )
 
-[connection signal="pressed" from="Exit/exit" to="." method="_on_exit_pressed"]
+[node name="Options" type="Node" parent="."]
+script = ExtResource( 12 )
+
+[node name="option_dialog" type="PopupDialog" parent="Options"]
+visible = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="option_wallpaper" type="Sprite" parent="Options/option_dialog"]
+position = Vector2( 0.582031, -0.291084 )
+scale = Vector2( 1.64868, 2.18595 )
+texture = ExtResource( 13 )
+centered = false
+
+[node name="option_question" type="Sprite" parent="Options/option_dialog"]
+position = Vector2( 509.322, 285.601 )
+texture = ExtResource( 9 )
+
+[node name="option_yes" type="TextureButton" parent="Options/option_dialog"]
+margin_left = 433.162
+margin_top = 352.241
+margin_right = 496.162
+margin_bottom = 393.241
+texture_normal = ExtResource( 10 )
+texture_hover = SubResource( 5 )
+
+[connection signal="pressed" from="options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Exit/exit_dialog/exit_yes" to="Exit" method="_on_exit_yes_pressed"]
 [connection signal="pressed" from="Exit/exit_dialog/exit_no" to="Exit" method="_on_exit_no_pressed"]
+[connection signal="pressed" from="Options/option_dialog/option_yes" to="Options" method="_on_option_yes_pressed"]
