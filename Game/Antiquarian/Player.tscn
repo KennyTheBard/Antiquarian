@@ -1,12 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://Assets/JimmyRascal_idle.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 21.7237
+radius = 71.8463
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 130.384
+radius = 186.842
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,4 +31,6 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -2.45547, -65.07 )
+frames = SubResource( 3 )
 
