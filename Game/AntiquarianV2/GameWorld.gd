@@ -14,7 +14,7 @@ func _ready():
 #	pass
 
 
-func create_world(world_seed):
+func create_world(world_seed) -> void:
 	# create a seed if none is given
 	if world_seed == null:
 		randomize()
