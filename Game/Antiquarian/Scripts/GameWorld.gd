@@ -24,7 +24,7 @@ func create_world(world_seed):
 	seed(world_seed)
 	
 	# prepare the world map
-	var size = 30
+	var size = 50
 	var world = []
 	for i in range(0, size):
 		world.append([])
@@ -43,21 +43,21 @@ func create_world(world_seed):
 	# generate the voronoi diagram
 	var zones = []
 	var zones_types = []
-	var num_zones = size * 10
+	var num_zones = size * 2
 	for i in range(num_zones):
-		var x = randi() % size
-		var y = randi() % size
-		var type = randi() % len(terrain)
+		var x = randi() % (size - 5) + 5
+		var y = randi() % (size - 5) + 5
+		var type = randi() % (len(terrain) - 1) + 1
 		zones.append(Vector2(x, y))
 		zones_types.append(type)
 	
 	#add border water
-	for i in range(0, size, 20):
+	for i in range(0, size, 5):
 		zones.append(Vector2(i, 0))
 		zones_types.append(0)
 		zones.append(Vector2(i, size - 1))
 		zones_types.append(0)
-	for i in range(0, size, 20):
+	for i in range(0, size, 5):
 		zones.append(Vector2(0, i))
 		zones_types.append(0)
 		zones.append(Vector2(size - 1, i))
@@ -91,23 +91,23 @@ func create_world(world_seed):
 #	$TileManager.active = true
 #
 #
-#	# add props to the game world
-#	for i in range(size):
-#		for j in range(size):
-#				var chance = randi() % 100
-#
-#				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
-#					var prop = load("res://Nodes/Prop.tscn").instance()
+	# add props to the game world
+	for i in range(size):
+		for j in range(size):
+				var chance = randi() % 100
+
+				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
+					var prop = load("res://Nodes/Props/Prop.tscn").instance()
 #					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
-#					if world[j][i] == 1:
-#						prop.get_node("./Sprite").texture = load("res://Assets/tree.png")
-#	#					prop.get_node("./Sprite").set_scale(Vector2(75, 75) / prop.get_node("./Sprite").texture.get_size())
-#
-#					else:
-#						prop.get_node("./Sprite").texture = load("res://Assets/rock.png")
-#	#					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
-#					prop.position = Vector2(i * 75, j * 75  + 30)
-#
-#					$ObjectManager.add(prop)
+					if world[j][i] == 1:
+						prop.get_node("./Sprite").texture = load("res://Assets/tree.png")
+	#					prop.get_node("./Sprite").set_scale(Vector2(75, 75) / prop.get_node("./Sprite").texture.get_size())
+
+					else:
+						prop.get_node("./Sprite").texture = load("res://Assets/rock.png")
+	#					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
+					prop.position = Vector2(i * 75, j * 75  + 30)
+
+					$ObjectManager.add(prop)
 	
 	pass
