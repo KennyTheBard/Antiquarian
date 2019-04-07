@@ -92,26 +92,34 @@ func create_world(world_seed) -> void:
 	# add props to the game world
 	for i in range(size):
 		for j in range(size):
-				var chance = randi() % 100
+				var chance = randi() % 1000
 
 				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
 					var prop = load("res://Prop.tscn").instance()
 					prop.init()
-
+					
+					# pick props depending on the terrain
 					if world[j][i] == 1:
 						prop.get_node("./Sprite").texture = load("res://tree.png")
 					else:
 						prop.get_node("./Sprite").texture = load("res://rock.png")
-						
 					var texture_size = prop.get_node("./Sprite").texture.get_size()
-					prop.scale = tile_size / Vector3(texture_size.x, texture_size.y, 1) * 0.01
-					prop.translation = Vector3(0, texture_size.y / 4 * 0.01, 0)
-					prop.translation += Vector3(i, 0, j) * tile_size * Vector3(0.01, 0, 0.01)
+					
+					# tweaking transformation values in order to achieve the desired result
+					prop.get_node("./Sprite").scale = tile_size / Vector3(texture_size.x, texture_size.y, 1) * 0.01
+					prop.get_node("./Sprite").translation = Vector3(0, texture_size.y , 0) * 0.01 \
+						* prop.get_node("./Sprite").scale
+					prop.translation = Vector3(j, 0, i) * tile_size * 0.01
+					prop.translation += Vector3(0, 0.2, -0.1)
+					prop.get_node("./Sprite").scale = Vector3(0.2, 0.2, 0.2)
+					
+					# enable billboarding and set the required flags
 					var material = SpatialMaterial.new()
-					material.set_billboard_mode(1)
-					prop.get_node("./Sprite").set_material_override(material)
+					material.set_billboard_mode(SpatialMaterial.BILLBOARD_ENABLED)
 					material.flags_transparent = true
+					material.params_billboard_keep_scale = true
+					prop.get_node("./Sprite").set_material_override(material)
+					
 					$ObjectManager.add_child(prop)
-					print(prop.translation)
-
+	
 	pass

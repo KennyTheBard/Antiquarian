@@ -7,6 +7,7 @@ extends "res://GameObject.gd"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init()
+
 	pass # Replace with function body.
 
 
