@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=2]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=1]
+
+[sub_resource type="AnimationNodeAnimation" id=2]
+
+[sub_resource type="AnimationNodeOneShot" id=3]
+autorestart_random_delay = 6.53813e-037
+
+[sub_resource type="AnimationNodeBlendTree" id=4]
+graph_offset = Vector2( 6.10352e-005, 146.56 )
+nodes/Animation/node = SubResource( 2 )
+nodes/Animation/position = Vector2( 100, 160 )
+nodes/OneShot/node = SubResource( 3 )
+nodes/OneShot/position = Vector2( 320, 260 )
+node_connections = [ "OneShot", 0, "Animation" ]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=5]
+
+[sub_resource type="AnimationNodeStateMachine" id=6]
+states/BlendSpace2D/node = SubResource( 1 )
+states/BlendSpace2D/position = Vector2( 337, 83 )
+states/BlendTree/node = SubResource( 4 )
+states/BlendTree/position = Vector2( 127, 80 )
+transitions = [ "BlendTree", "BlendSpace2D", SubResource( 5 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=7]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 6 )
+anim_player = NodePath("AnimationPlayer")
+active = true
+parameters/playback = SubResource( 7 )
+parameters/BlendSpace2D/blend_position = Vector2( 0, 0 )
+parameters/BlendTree/OneShot/active = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
+

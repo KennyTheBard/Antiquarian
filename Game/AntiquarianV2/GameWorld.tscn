@@ -8,7 +8,9 @@ script = ExtResource( 1 )
 
 [node name="TileManager" type="Spatial" parent="."]
 
+[node name="ObjectManager" type="Spatial" parent="."]
+
 [node name="Camera" type="Camera" parent="."]
-transform = Transform( 1, 0, 0, 0, 0.53545, 0.844567, 0, -0.844567, 0.53545, 0, 1, 0.836348 )
+transform = Transform( 1, 0, 0, 0, 0.53545, 0.844567, 0, -0.844567, 0.53545, 0, 2.29752, 2.37653 )
 script = ExtResource( 2 )
 

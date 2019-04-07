@@ -17,7 +17,7 @@ func init():
 	.init()
 	
 	# initiate the Sprite child node
-	var sp = Sprite.new()
+	var sp = Sprite3D.new()
 	sp.name = "Placeable"
 	add_child(sp)
 	

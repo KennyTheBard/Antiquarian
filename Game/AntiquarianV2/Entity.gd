@@ -13,10 +13,8 @@ func _ready():
 #	pass
 
 func init():
-	# initiate the Sprite child node
-	var sp = Sprite.new()
-	sp.name = "Sprite"
-	add_child(sp)
+	# call parent init
+	.init()
 	
 	# initiate the physics component
 	var body = KinematicBody.new()

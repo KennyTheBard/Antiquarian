@@ -90,22 +90,28 @@ func create_world(world_seed) -> void:
 			$TileManager.add_child(tile)
 
 	# add props to the game world
-#	for i in range(size):
-#		for j in range(size):
-#				var chance = randi() % 100
-#
-#				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
-#					var prop = load("res://Nodes/Props/Prop.tscn").instance()
-##					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
-#					if world[j][i] == 1:
-#						prop.get_node("./Sprite").texture = load("res://Assets/tree.png")
-#	#					prop.get_node("./Sprite").set_scale(Vector2(75, 75) / prop.get_node("./Sprite").texture.get_size())
-#
-#					else:
-#						prop.get_node("./Sprite").texture = load("res://Assets/rock.png")
-#	#					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
-#					prop.position = Vector2(i * 75, j * 75  + 30)
-#
-#					$ObjectManager.add(prop)
+	for i in range(size):
+		for j in range(size):
+				var chance = randi() % 100
+
+				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
+					var prop = load("res://Prop.tscn").instance()
+					prop.init()
+
+					if world[j][i] == 1:
+						prop.get_node("./Sprite").texture = load("res://tree.png")
+					else:
+						prop.get_node("./Sprite").texture = load("res://rock.png")
+						
+					var texture_size = prop.get_node("./Sprite").texture.get_size()
+					prop.scale = tile_size / Vector3(texture_size.x, texture_size.y, 1) * 0.01
+					prop.translation = Vector3(0, texture_size.y / 4 * 0.01, 0)
+					prop.translation += Vector3(i, 0, j) * tile_size * Vector3(0.01, 0, 0.01)
+					var material = SpatialMaterial.new()
+					material.set_billboard_mode(1)
+					prop.get_node("./Sprite").set_material_override(material)
+					material.flags_transparent = true
+					$ObjectManager.add_child(prop)
+					print(prop.translation)
 
 	pass

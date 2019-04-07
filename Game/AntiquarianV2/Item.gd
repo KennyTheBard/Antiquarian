@@ -16,10 +16,7 @@ func _ready():
 
 
 func init():
-	# initiate the Sprite child node
-	var sp = Sprite.new()
-	sp.name = "Sprite"
-	add_child(sp)
+	.init()
 	
 	# initiate the physics component
 	var area = Area.new()
