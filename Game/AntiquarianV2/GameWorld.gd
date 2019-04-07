@@ -45,19 +45,19 @@ func create_world(world_seed) -> void:
 	var zones_types = []
 	var num_zones = size * 2
 	for i in range(num_zones):
-		var x = randi() % (size - 5) + 5
-		var y = randi() % (size - 5) + 5
+		var x = randi() % (size - 10) + 5
+		var y = randi() % (size - 10) + 5
 		var type = randi() % (len(terrain) - 1) + 1
 		zones.append(Vector2(x, y))
 		zones_types.append(type)
 	
 	#add border water
-	for i in range(0, size, 5):
+	for i in range(0, size, 8):
 		zones.append(Vector2(i, 0))
 		zones_types.append(0)
 		zones.append(Vector2(i, size - 1))
 		zones_types.append(0)
-	for i in range(0, size, 5):
+	for i in range(0, size, 8):
 		zones.append(Vector2(0, i))
 		zones_types.append(0)
 		zones.append(Vector2(size - 1, i))
@@ -107,5 +107,5 @@ func create_world(world_seed) -> void:
 #					prop.position = Vector2(i * 75, j * 75  + 30)
 #
 #					$ObjectManager.add(prop)
-#
+
 	pass
