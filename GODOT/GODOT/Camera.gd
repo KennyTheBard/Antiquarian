@@ -13,13 +13,9 @@ onready var inventory = get_node("inventory")
 
 var scale_factor  = Vector3(0.9, 0.9, 1)
 var position = Vector3(1,1,-3.7)
-var dropped_position = Vector3(0,0.1,-3.7) 
 
 var object
-var nodes
-
-var slot = 1
-
+var slot = 7
 # Called when the node enters the scene tree for the first time.
 func _ready():
 		#gen an instance
@@ -27,30 +23,24 @@ func _ready():
 		object[ITEM].translate(position)
 		add_child(object[ITEM])
 		
-		nodes = [item[ITEM].instance(), item[TYPE], 1]
-		nodes[ITEM].translate(dropped_position)
-		add_child(nodes[ITEM])
 
 func add_to_inventory(var node):
-	var dropped = null
 	if(node != [] && node != null):
 		#remove from child nodes
 		remove_child(node[ITEM])
 		
 		#move to it's initial position
-		node[ITEM].translate(-node[ITEM].get_translation())
+		node[ITEM].translate(-position)
 		
 		#add to inventory
-		dropped = inventory.add_item(node,slot)
-#		dropped = inventory.add(node)
+		inventory._add_item(node, slot)
 	
 	#remove from this node
-	return dropped
+	return []
 
 func get_from_inventory(var index):
 	#get the node from inventory
-	var node = inventory.drop_item(index)
-#	var node = inventory.drop()
+	var node = inventory.get_item(index)
 	
 	#if the node is not null
 	if(node != null && node != []):	
@@ -71,15 +61,6 @@ func get_from_inventory(var index):
 func _input(event):
 		if Input.is_key_pressed(KEY_K):	
 			object = add_to_inventory(object)
-			if object != null:
-				add_child(object[ITEM])				
-				object[ITEM].translate(dropped_position);
-			
-		if Input.is_key_pressed(KEY_O):	
-			nodes = add_to_inventory(nodes)
-			if nodes != null:
-				add_child(nodes[ITEM])
-				nodes[ITEM].translate(dropped_position);
 		
 		if Input.is_key_pressed(KEY_M):
 			get_from_inventory(slot)
