@@ -84,10 +84,17 @@ func create_world(world_seed) -> void:
 			var tile = tile_class.instance()
 #			add_child(tile)
 			tile.texture = terrain[world[i][j]]
-			tile.translation = Vector3(i, 0, j) * tile_size * Vector3(0.01, 0, 0.01)
+			tile.translation = Vector3(i, 0, j) * tile_size * 0.01
 			tile.scale = tile_size / Vector3(tile.texture.get_size().x, 1, tile.texture.get_size().y)
 			$TileManager.add_child(tile)
-
+	
+	# prepare prop list
+	var props = []
+	props.append(load("res://tree.png"))
+	props.append(load("res://rock.png"))
+	props.append(load("res://reed.png"))
+	props.append(load("res://bush_full.png"))
+	
 	# add props to the game world
 	for i in range(size):
 		for j in range(size):
@@ -100,13 +107,13 @@ func create_world(world_seed) -> void:
 					# pick props depending on the terrain
 					match world[i][j]:
 						1:
-							prop.get_node("./Sprite").texture = load("res://tree.png")
+							prop.get_node("./Sprite").texture = props[0]
 						2:
-							prop.get_node("./Sprite").texture = load("res://rock.png")
+							prop.get_node("./Sprite").texture = props[1]
 						3:
-							prop.get_node("./Sprite").texture = load("res://reed.png")
+							prop.get_node("./Sprite").texture = props[2]
 						4:
-							prop.get_node("./Sprite").texture = load("res://bush_full.png")
+							prop.get_node("./Sprite").texture = props[3]
 					var texture_size = prop.get_node("./Sprite").texture.get_size()
 					
 					# tweaking transformation values in order to achieve the desired result
@@ -125,5 +132,9 @@ func create_world(world_seed) -> void:
 					prop.get_node("./Sprite").set_material_override(material)
 					
 					$ObjectManager.add_child(prop)
+	
+	$Player.init()
+	$Player.translation.x += size * 0.8 / 2
+	$Player.translation.z += size * 0.8 / 2
 	
 	pass
