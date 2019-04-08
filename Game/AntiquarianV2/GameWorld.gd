@@ -35,7 +35,6 @@ func create_world(world_seed) -> void:
 	var terrain = []
 	terrain.append(load("res://water_turf.jpg"))
 	terrain.append(load("res://forest_turf.png"))
-	terrain.append(load("res://sandy_turf.png"))
 	terrain.append(load("res://rocky_turf.png"))
 	terrain.append(load("res://savanna_turf.png"))
 	terrain.append(load("res://mud_turf.png"))
@@ -92,24 +91,29 @@ func create_world(world_seed) -> void:
 	# add props to the game world
 	for i in range(size):
 		for j in range(size):
-				var chance = randi() % 1000
+				var chance = randi() % 100
 
-				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
+				if chance > 80 and world[i][j] > 0:
 					var prop = load("res://Prop.tscn").instance()
 					prop.init()
 					
 					# pick props depending on the terrain
-					if world[j][i] == 1:
-						prop.get_node("./Sprite").texture = load("res://tree.png")
-					else:
-						prop.get_node("./Sprite").texture = load("res://rock.png")
+					match world[i][j]:
+						1:
+							prop.get_node("./Sprite").texture = load("res://tree.png")
+						2:
+							prop.get_node("./Sprite").texture = load("res://rock.png")
+						3:
+							prop.get_node("./Sprite").texture = load("res://reed.png")
+						4:
+							prop.get_node("./Sprite").texture = load("res://bush_full.png")
 					var texture_size = prop.get_node("./Sprite").texture.get_size()
 					
 					# tweaking transformation values in order to achieve the desired result
 					prop.get_node("./Sprite").scale = tile_size / Vector3(texture_size.x, texture_size.y, 1) * 0.01
 					prop.get_node("./Sprite").translation = Vector3(0, texture_size.y , 0) * 0.01 \
 						* prop.get_node("./Sprite").scale
-					prop.translation = Vector3(j, 0, i) * tile_size * 0.01
+					prop.translation = Vector3(i, 0, j) * tile_size * 0.01
 					prop.translation += Vector3(0, 0.2, -0.1)
 					prop.get_node("./Sprite").scale = Vector3(0.2, 0.2, 0.2)
 					
