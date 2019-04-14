@@ -4,7 +4,7 @@
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/JimmyRascal_idle.png" type="Texture" id=3]
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -12,17 +12,17 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CylinderShape" id=1]
+[sub_resource type="CylinderShape" id=2]
 radius = 3.24953
 
-[node name="Object" index="0" instance=ExtResource( 1 )]
+[node name="Object" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 
 [node name="InteractionZone" type="Area" parent="." index="2"]
 
 [node name="Shape" type="CollisionShape" parent="InteractionZone" index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 

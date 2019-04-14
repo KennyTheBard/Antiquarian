@@ -1,7 +1,7 @@
 extends "res://Scripts/Entity.gd"
 
 # movement speed
-var speed = 2
+var speed = 5
 
 # value which the player is already rotated
 var rot = 0

@@ -12,13 +12,10 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func init():
-	# call parent init
-	.init()
-	
-	# initiate the Sprite child node
-	var sp = Sprite3D.new()
-	sp.name = "Placeable"
-	add_child(sp)
-	
+func interact():
+	print("Iteracting with Placeable")
+	pass
+
+
+func place(pos):
 	pass

@@ -6,32 +6,18 @@ extends "res://Scripts/GameObject.gd"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	init()
 	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func init():
-	.init()
-	
-	# initiate the physics component
-	var area = Area.new()
-	area.name = "Area"
-	var shape = CylinderShape.new()
-	shape.resource_name = "Shape"
-	shape.radius = 3
-	shape.height = 1
-	var shape_owner = area.create_shape_owner(area)
-	area.shape_owner_add_shape(shape_owner, shape)
-	add_child(area)
-	
-	print_tree_pretty()
-	pass
 	
 func drop(pos):
 	translation = pos
+	pass
+
+
+func interact():
+	print("Iteracting with Item")
 	pass
