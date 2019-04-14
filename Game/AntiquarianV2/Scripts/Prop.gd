@@ -32,3 +32,8 @@ func init():
 	add_child(body)
 	
 	pass
+
+
+func interact():
+	print("Iteracting with Prop")
+	pass

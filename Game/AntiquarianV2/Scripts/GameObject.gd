@@ -18,4 +18,5 @@ func init():
 	pass
 	
 func interact():
+	print("Iteracting with Game Object")
 	pass

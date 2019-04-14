@@ -32,6 +32,8 @@ func init():
 	zone.shape_owner_add_shape(shape_owner, shape)
 	add_child(zone)
 	
+	print_tree_pretty()
+	
 	# preparing the texture
 	$Sprite.texture = load("res://Assets/JimmyRascal_idle.png")
 	$Sprite.translation.y += 0.2
@@ -81,8 +83,8 @@ func _physics_process(delta):
 		
 		# bodies can also be used, but the other
 		# entities must be modeled with bodies
-		var objs = $InteractZone.get_overlapping_areas()
-		var bodies = $InteractZone.get_overlapping_bodies()
+		var objs = $InteractionZone.get_overlapping_areas()
+		var bodies = $InteractionZone.get_overlapping_bodies()
 		for body in bodies:
 			objs.append(body)
 		
@@ -97,7 +99,7 @@ func _physics_process(delta):
 			if obj == $Body:
 				continue
 			
-			obj.interact()
+			obj.get_parent().interact()
 			
 			break
 
