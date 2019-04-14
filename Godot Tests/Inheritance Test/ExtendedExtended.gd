@@ -1,4 +1,4 @@
-extends Node2D
+extends "res://Base.gd"
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -9,12 +9,5 @@ func _ready():
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_key_pressed(KEY_SPACE):
-		activate()
-	else:
-		$Sprite.modulate = Color(1, 1, 1)
-	pass
-
-func activate():
-	$Sprite.modulate = Color(1, 1, 1)
+#func _process(delta):
+#	pass

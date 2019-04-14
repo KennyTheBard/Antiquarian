@@ -6,15 +6,9 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Here is Daddy")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	if Input.is_key_pressed(KEY_SPACE):
-		activate()
-	else:
-		$Sprite.modulate = Color(1, 1, 1)
-	pass
-
-func activate():
-	$Sprite.modulate = Color(1, 1, 1)
+#func _process(delta):
+#	pass
