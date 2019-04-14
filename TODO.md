@@ -4,7 +4,7 @@
 ### Sprint 2
 - [ ] Merge the HUD into the main game
 - [ ] Artwork for turf textures
-- [ ] Pivot offseting / billboard texture bug
+- [x] Pivot offseting / billboard texture bug
 - [ ] Configuration design
 - [ ] Basic interaction (pick and gather)
 - [ ] Extend basic objects
