@@ -1,7 +1,7 @@
 extends Spatial
 
 # the size a tile texture has to be scaled to
-var tile_size = Vector3(75, 1, 75)
+var tile_size = Vector3(5.12, 0, 5.12)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -84,16 +84,15 @@ func create_world(world_seed) -> void:
 			var tile = tile_class.instance()
 #			add_child(tile)
 			tile.texture = terrain[world[i][j]]
-			tile.translation = Vector3(i, 0, j) * tile_size * 0.01
-			tile.scale = tile_size / Vector3(tile.texture.get_size().x, 1, tile.texture.get_size().y)
+			tile.translation = Vector3(i, 0, j) * tile_size
 			$TileManager.add_child(tile)
 	
 	# prepare prop list
 	var props = []
-	props.append(load("res://Assets/tree.png"))
-	props.append(load("res://Assets/rock.png"))
-	props.append(load("res://Assets/reed.png"))
-	props.append(load("res://Assets/bush_full.png"))
+	props.append(load("res://Scenes/Props/Tree.tscn"))
+	props.append(load("res://Scenes/Props/Rock.tscn"))
+	props.append(load("res://Scenes/Props/Reeds.tscn"))
+	props.append(load("res://Scenes/Props/Berrybush.tscn"))
 	
 	# add props to the game world
 	for i in range(size):
@@ -101,40 +100,22 @@ func create_world(world_seed) -> void:
 				var chance = randi() % 100
 
 				if chance > 80 and world[i][j] > 0:
-					var prop = load("res://Scenes/Props/Prop.tscn").instance()
-					prop.init()
-					
 					# pick props depending on the terrain
-					match world[i][j]:
-						1:
-							prop.get_node("./Sprite").texture = props[0]
-						2:
-							prop.get_node("./Sprite").texture = props[1]
-						3:
-							prop.get_node("./Sprite").texture = props[2]
-						4:
-							prop.get_node("./Sprite").texture = props[3]
-					var texture_size = prop.get_node("./Sprite").texture.get_size()
+					var prop = props[world[i][j] - 1].instance()
 					
-					# tweaking transformation values in order to achieve the desired result
-					prop.get_node("./Sprite").scale = tile_size / Vector3(texture_size.x, texture_size.y, 1) * 0.01
-					prop.get_node("./Sprite").translation = Vector3(0, texture_size.y , 0) * 0.01 \
-						* prop.get_node("./Sprite").scale
-					prop.translation = Vector3(i, 0, j) * tile_size * 0.01
-					prop.translation += Vector3(0, 0.2, -0.1)
-					prop.get_node("./Sprite").scale = Vector3(0.2, 0.2, 0.2)
-					
-					# enable billboarding and set the required flags
-					var material = SpatialMaterial.new()
-					material.set_billboard_mode(SpatialMaterial.BILLBOARD_ENABLED)
-					material.flags_transparent = true
-					material.params_billboard_keep_scale = true
-					prop.get_node("./Sprite").set_material_override(material)
+					# placing the props in the world
+					prop.translation = Vector3(i, 0, j) * tile_size
+
+#					# enable billboarding and set the required flags
+#					var material = SpatialMaterial.new()
+#					material.set_billboard_mode(SpatialMaterial.BILLBOARD_ENABLED)
+#					material.flags_transparent = true
+#					material.params_billboard_keep_scale = true
+#					prop.get_node("./Sprite").set_material_override(material)
 					
 					$ObjectManager.add_child(prop)
 	
-	$Player.init()
-	$Player.translation.x += size * 0.8 / 2
-	$Player.translation.z += size * 0.8 / 2
+	$Player.translation = tile_size * size / 2
+	$Player.translation.y += 2
 	
 	pass
