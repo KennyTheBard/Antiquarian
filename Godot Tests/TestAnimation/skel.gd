@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 # class member variables go here, for example:
 # var a = 2
@@ -22,15 +22,15 @@ func flip_sprites():
 
 func state_action():
 	match curr_state:
-		ATTACK:
+		state.ATTACK:
 			$attack.visible = true
 			$walk.visible = false
 			$idle.visible = false
-		WALK:
+		state.WALK:
 			$attack.visible = false
 			$walk.visible = true
 			$idle.visible = false
-		IDLE:
+		state.IDLE:
 			$attack.visible = false
 			$walk.visible = false
 			$idle.visible = true

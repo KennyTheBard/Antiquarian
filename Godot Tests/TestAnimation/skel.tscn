@@ -6,11 +6,7 @@
 [ext_resource path="res://Skeleton Idle.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
-
 resource_name = "skel attack"
-length = 1.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -21,15 +17,12 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0, 0 ]
+"values": [ 0, 17 ]
 }
 
 [sub_resource type="Animation" id=2]
-
 resource_name = "skel walk"
-length = 1.0
 loop = true
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -44,11 +37,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-
 resource_name = "skel idle"
-length = 1.0
 loop = true
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -63,10 +53,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-
-length = 1.0
 loop = true
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
@@ -80,73 +67,37 @@ tracks/0/keys = {
 "values": [ 0, 11 ]
 }
 
-[node name="Area2D" type="Area2D" index="0"]
-
-position = Vector2( 353.975, 306.713 )
+[node name="Area2D" type="Node2D"]
+position = Vector2( 349.564, 303.773 )
 scale = Vector2( 3.6105, 3.6105 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="attack" type="Sprite" parent="." index="0"]
-
+[node name="attack" type="Sprite" parent="."]
+position = Vector2( -8.75474, 0.407204 )
 texture = ExtResource( 2 )
+offset = Vector2( 10, -1 )
 hframes = 18
-_sections_unfolded = [ "Animation", "Offset", "Transform" ]
+frame = 17
 
-[node name="attackanim" type="AnimationPlayer" parent="attack" index="0"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
+[node name="attackanim" type="AnimationPlayer" parent="attack"]
 "anims/skel attack" = SubResource( 1 )
-blend_times = [  ]
 
-[node name="walk" type="Sprite" parent="." index="1"]
-
-position = Vector2( -6.82745, 1.95071 )
+[node name="walk" type="Sprite" parent="."]
+position = Vector2( -8.25264, 1.54351 )
 texture = ExtResource( 3 )
 hframes = 13
 frame = 12
-_sections_unfolded = [ "Animation", "Offset" ]
 
-[node name="walkanim" type="AnimationPlayer" parent="walk" index="0"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
+[node name="walkanim" type="AnimationPlayer" parent="walk"]
 "anims/skel walk" = SubResource( 2 )
-blend_times = [  ]
 
-[node name="idle" type="Sprite" parent="." index="2"]
-
+[node name="idle" type="Sprite" parent="."]
 position = Vector2( -6.82745, 1.95071 )
 texture = ExtResource( 4 )
 hframes = 11
 frame = 5
-_sections_unfolded = [ "Animation", "Offset", "Region" ]
 
-[node name="idleanim" type="AnimationPlayer" parent="idle" index="0"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
+[node name="idleanim" type="AnimationPlayer" parent="idle"]
 "anims/skel idle" = SubResource( 3 )
 "anims/skel walk" = SubResource( 4 )
-blend_times = [  ]
-
 
