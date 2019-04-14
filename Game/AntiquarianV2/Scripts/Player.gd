@@ -17,32 +17,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-func init():
-	# call parent init
-	.init()
-	
-	# preparing the interaction zone
-	var zone = Area.new()
-	zone.name = "InteractionZone"
-	var shape = CylinderShape.new()
-	shape.resource_name = "Shape"
-	shape.radius = 3
-	shape.height = 1
-	var shape_owner = zone.create_shape_owner(zone)
-	zone.shape_owner_add_shape(shape_owner, shape)
-	add_child(zone)
-	
-	print_tree_pretty()
-	
-	# preparing the texture
-	$Sprite.texture = load("res://Assets/JimmyRascal_idle.png")
-	$Sprite.translation.y += 0.2
-	$Sprite.scale = Vector3(0.2, 0.2, 0.2)
-	$Sprite.offset.y += 20
-	
-	pass
-
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	

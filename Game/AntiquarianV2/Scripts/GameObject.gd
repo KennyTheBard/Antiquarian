@@ -9,14 +9,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func init():
-	# initiate the Sprite child node
-	var sp = Sprite3D.new()
-	sp.name = "Sprite"
-	add_child(sp)
-	
-	pass
-	
 func interact():
 	print("Iteracting with Game Object")
 	pass

@@ -11,12 +11,9 @@ var ripe = true
 # packed scene with berry
 var berry = preload("res://Scenes/Items/Berry.tscn")
 
-# the 2 sprites needed
-var full = preload("res://Assets/bush_full.png")
-var empty = preload("res://Assets/bush_empty.png")
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Sprite.play("Full")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,13 +23,7 @@ func _process(delta):
 		if ripe_time <= 0:
 			ripe_time = 0
 			ripe = true
-
-func init():
-	.init()
-	
-	$Sprite.texture = full
-	
-	pass
+			
 
 #func interact():
 #	if ripe:

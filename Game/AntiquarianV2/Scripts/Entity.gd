@@ -12,19 +12,7 @@ func _ready():
 func _process(delta):
 	pass
 
-func init():
-	# call parent init
-	.init()
-	
-	# initiate the physics component
-	var body = KinematicBody.new()
-	body.name = "Body"
-	var shape = CylinderShape.new()
-	shape.resource_name = "Shape"
-	shape.radius = 0.2
-	shape.height = 1
-	var shape_owner = body.create_shape_owner(body)
-	body.shape_owner_add_shape(shape_owner, shape)
-	add_child(body)
-	
+
+func interact():
+	print("Iteracting with Entity")
 	pass
