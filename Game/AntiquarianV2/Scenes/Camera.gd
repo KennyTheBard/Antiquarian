@@ -7,7 +7,7 @@ var speed = 5
 var rot = 0
 
 # the value with which the rotation will be done
-var rotate_factor = PI / 24
+var rotate_factor = PI / 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,18 +31,24 @@ func _process(delta):
 		translation.z += speed * delta * -sin(rot)
 		translation.x += speed * delta * cos(rot)
 		
-	if Input.is_key_pressed(KEY_KP_1):
+	if Input.is_key_pressed(KEY_KP_5):
 		translation.y += speed * delta
 		
-	if Input.is_key_pressed(KEY_KP_3):
+	if Input.is_key_pressed(KEY_KP_0):
 		translation.y -= speed * delta
 		
+	if Input.is_key_pressed(KEY_KP_1):
+		rotate(Vector3(1, 0, 0), rotate_factor * delta)
+		
+	if Input.is_key_pressed(KEY_KP_3):
+		rotate(Vector3(1, 0, 0), -rotate_factor * delta)
+		
 	if Input.is_key_pressed(KEY_KP_7):
-		rotate(Vector3(0, 1, 0), rotate_factor)
-		rot += rotate_factor
+		rotate(Vector3(0, 1, 0), rotate_factor * delta)
+		rot += rotate_factor * delta
 	
 	if Input.is_key_pressed(KEY_KP_9):
-		rotate(Vector3(0, 1, 0), -rotate_factor)
-		rot += -rotate_factor
+		rotate(Vector3(0, 1, 0), -rotate_factor * delta)
+		rot += -rotate_factor * delta
 		
 	pass
