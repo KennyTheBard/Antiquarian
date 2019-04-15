@@ -10,7 +10,7 @@ var rot = 0
 var pressed = false
 
 # the value with which the rotation will be done
-var rotate_factor = PI /4
+var rotate_factor = PI / 4
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,23 +20,27 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	
-	if Input.is_key_pressed(KEY_W):
+	if Input.is_action_pressed("move_up"):
 		translation.z += speed * delta * -cos(rot)
 		translation.x += speed * delta * -sin(rot)
-	if Input.is_key_pressed(KEY_S):
+		
+	if Input.is_action_pressed("move_down"):
 		translation.z += speed * delta * cos(rot)
 		translation.x += speed * delta * sin(rot)
-	if Input.is_key_pressed(KEY_A):
+		
+	if Input.is_action_pressed("move_left"):
 		translation.z += speed * delta * sin(rot)
 		translation.x += speed * delta * -cos(rot)
-	if Input.is_key_pressed(KEY_D):
+		
+	if Input.is_action_pressed("move_right"):
 		translation.z += speed * delta * -sin(rot)
 		translation.x += speed * delta * cos(rot)
-	if Input.is_action_just_pressed("ui_rotate_left"):
+		
+	if Input.is_action_just_pressed("rotate_left"):
 		rotate(Vector3(0, 1, 0), rotate_factor)
 		rot += rotate_factor
 	
-	if Input.is_action_just_pressed("ui_rotate_right"):
+	if Input.is_action_just_pressed("rotate_right"):
 		rotate(Vector3(0, 1, 0), -rotate_factor)
 		rot += -rotate_factor
 	
