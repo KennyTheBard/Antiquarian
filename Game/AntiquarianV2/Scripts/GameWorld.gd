@@ -116,6 +116,5 @@ func create_world(world_seed) -> void:
 					$ObjectManager.add_child(prop)
 	
 	$Player.translation = tile_size * size / 2
-	$Player.translation.y += 2
 	
 	pass
