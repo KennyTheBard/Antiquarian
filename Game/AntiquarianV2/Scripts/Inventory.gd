@@ -6,11 +6,15 @@ var slots = []
 var stack = []
 
 # the size of the lists
-var inventory_max_size = 6
+var inventory_size = 6
+
+# represents the current position in inventory
+# always use it as <current_pos % inventory_size>
+var current_pos = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(inventory_max_size):
+	for i in range(inventory_size):
 		slots.append(null)
 		stack.appen(0)
 	pass
@@ -25,7 +29,7 @@ func _ready():
 # 	@return: the given item if no slot available, else null
 func add_item(item):
 	# search for same-type non-full stacks
-	for i in len(slots):
+	for i in range(inventory_size):
 		if slots[i] != null:
 			if slots[i].get_name() == item.get_name():
 				if item.stack_size > stack[i]:
@@ -33,7 +37,7 @@ func add_item(item):
 					return null
 	
 	# search for empty slots
-	for i in len(slots):
+	for i in range(inventory_size):
 		if slots[i] == null:
 			slots[i] = item
 			stack[i] = 1
@@ -43,6 +47,29 @@ func add_item(item):
 	return item
 
 
-# get 
-func take_item(slot_num, number):
-	pass
+# Swap the given list of items with the stack at
+# current position in the inventory, droping the former
+# or null, if the slot was empty already
+func swap(item, num):
+	var aux_item = slots[current_pos % inventory_size]
+	var aux_num = stack[current_pos % inventory_size]
+	slots[current_pos % inventory_size] = item
+	stack[current_pos % inventory_size] = num
+	
+	if aux_num > 0:
+		return [aux_item, aux_num]
+	else:
+		return null
+
+# Get one item from the slot at the current position
+# and returns it or return null if the slot is empty
+func take_item():
+	var aux_item = slots[current_pos % inventory_size]
+	
+	if aux_item != null:
+		stack[current_pos % inventory_size] -= 1
+		if stack[current_pos % inventory_size] == 0:
+			slots[current_pos % inventory_size] = null
+		return aux_item
+	else:
+		return null
