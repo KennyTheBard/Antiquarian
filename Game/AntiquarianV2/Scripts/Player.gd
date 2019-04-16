@@ -80,5 +80,4 @@ func _physics_process(delta):
 			obj.get_parent().interact()
 			
 			break
-
 	pass
