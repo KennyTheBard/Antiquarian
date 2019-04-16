@@ -1,9 +1,9 @@
 extends Spatial
 
 # inventory implemented as a list that holds item type (or null in case
-# of a empty slot) and a list for current stack size
+# of a empty slot) and a list of lists for item types instances
 var slots = []
-var stack = []
+var stacks = []
 
 # the size of the lists
 var inventory_size = 6
@@ -15,8 +15,8 @@ var current_pos = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for i in range(inventory_size):
-		slots.append(null)
-		stack.appen(0)
+		slots.push_back(null)
+		stacks.push_back([])
 	pass
 
 
@@ -31,16 +31,16 @@ func add_item(item):
 	# search for same-type non-full stacks
 	for i in range(inventory_size):
 		if slots[i] != null:
-			if slots[i].get_name() == item.get_name():
-				if item.stack_size > stack[i]:
-					stack[i] += 1
+			if slots[i] == item.get_name():
+				if item.stack_size > len(stacks[i]):
+					stacks[i].push_back(item)
 					return null
 	
 	# search for empty slots
 	for i in range(inventory_size):
 		if slots[i] == null:
-			slots[i] = item
-			stack[i] = 1
+			slots[i] = item.get_name()
+			stacks[i].push_back(item)
 			return null
 	
 	# no available slot
@@ -52,9 +52,9 @@ func add_item(item):
 # or null, if the slot was empty already
 func swap(item, num):
 	var aux_item = slots[current_pos % inventory_size]
-	var aux_num = stack[current_pos % inventory_size]
+	var aux_num = len(stacks[current_pos % inventory_size])
 	slots[current_pos % inventory_size] = item
-	stack[current_pos % inventory_size] = num
+	stacks[current_pos % inventory_size] = num
 	
 	if aux_num > 0:
 		return [aux_item, aux_num]
@@ -64,12 +64,15 @@ func swap(item, num):
 # Get one item from the slot at the current position
 # and returns it or return null if the slot is empty
 func take_item():
-	var aux_item = slots[current_pos % inventory_size]
-	
-	if aux_item != null:
-		stack[current_pos % inventory_size] -= 1
-		if stack[current_pos % inventory_size] == 0:
+	if len(stacks[current_pos % inventory_size]) > 0:
+		# recovering the current item
+		var aux_item = stacks[current_pos % inventory_size].pop_front()
+		
+		# free up the slot if the stack is empty
+		if len(stacks[current_pos % inventory_size]) == 0:
 			slots[current_pos % inventory_size] = null
+		
+		# return the item
 		return aux_item
 	else:
 		return null
