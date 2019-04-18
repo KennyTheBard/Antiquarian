@@ -6,7 +6,7 @@ var slots = []
 var stacks = []
 
 # the size of the lists
-var inventory_size = 6
+var inventory_size = 5
 
 # represents the current position in inventory
 # always use it as <current_pos % inventory_size>
