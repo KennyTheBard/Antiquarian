@@ -61,6 +61,7 @@ func swap(item, num):
 	else:
 		return null
 
+
 # Get one item from the slot at the current position
 # and returns it or return null if the slot is empty
 func take_item():
@@ -76,3 +77,21 @@ func take_item():
 		return aux_item
 	else:
 		return null
+
+
+# Drop all items from the slot at the current position
+# and returns them or return null if the slot is empty
+func drop_all():
+	# recovering the items
+	var aux_items = []
+	while not stacks[current_pos % inventory_size].empty():
+		aux_items.append(stacks[current_pos % inventory_size].pop_front())
+	
+	# free up the slot
+	slots[current_pos % inventory_size] = null
+	
+	# return the item
+	if aux_items.empty():
+		return null
+	else:
+		return aux_items
