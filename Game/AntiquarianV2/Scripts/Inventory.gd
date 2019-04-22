@@ -34,7 +34,6 @@ func _process(delta):
 			item.drop(get_parent().translation)
 	
 #	if Input.is_action_just_pressed("equip"):
-	
 	pass
 
 

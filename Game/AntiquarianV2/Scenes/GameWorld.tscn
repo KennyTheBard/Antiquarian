@@ -46,6 +46,7 @@ current = true
 script = ExtResource( 3 )
 
 [node name="HUDInventory" type="Control" parent="Player/Camera"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -152,6 +153,7 @@ margin_right = 344.013
 margin_bottom = 39.1198
 
 [node name="HUDHealthbar" type="Control" parent="Player/Camera"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 7 )
