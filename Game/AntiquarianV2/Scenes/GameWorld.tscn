@@ -57,10 +57,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -629.0
-margin_top = -355.0
-margin_right = -629.0
-margin_bottom = -355.0
+margin_left = -631.793
+margin_top = -357.459
+margin_right = -631.793
+margin_bottom = -357.459
 script = ExtResource( 4 )
 
 [node name="InventoryBack" type="TextureRect" parent="Player/Camera/HUDInventory"]
@@ -71,6 +71,50 @@ margin_right = 1148.0
 margin_bottom = 650.0
 rect_scale = Vector2( 0.55, 0.55 )
 texture = ExtResource( 5 )
+
+[node name="Slots" type="Control" parent="Player/Camera/HUDInventory"]
+margin_left = 98.3737
+margin_top = 271.321
+margin_right = 138.374
+margin_bottom = 311.321
+
+[node name="Slot1" type="TextureRect" parent="Player/Camera/HUDInventory/Slots"]
+margin_left = 24.2149
+margin_top = 16.8953
+margin_right = 64.2149
+margin_bottom = 56.8953
+rect_clip_content = true
+size_flags_horizontal = 4
+size_flags_vertical = 4
+expand = true
+
+[node name="Slot2" type="TextureRect" parent="Player/Camera/HUDInventory/Slots"]
+margin_left = 97.8308
+margin_top = 15.4957
+margin_right = 137.831
+margin_bottom = 55.4957
+expand = true
+
+[node name="Slot3" type="TextureRect" parent="Player/Camera/HUDInventory/Slots"]
+margin_left = 174.653
+margin_top = 16.2902
+margin_right = 214.653
+margin_bottom = 56.2902
+expand = true
+
+[node name="Slot4" type="TextureRect" parent="Player/Camera/HUDInventory/Slots"]
+margin_left = 250.214
+margin_top = 15.4957
+margin_right = 290.214
+margin_bottom = 55.4957
+expand = true
+
+[node name="Slot5" type="TextureRect" parent="Player/Camera/HUDInventory/Slots"]
+margin_left = 325.685
+margin_top = 15.8929
+margin_right = 365.685
+margin_bottom = 55.8929
+expand = true
 
 [node name="InventoryFront" type="TextureRect" parent="Player/Camera/HUDInventory"]
 anchor_right = 1.0
@@ -94,6 +138,7 @@ text = "12345"
 scroll_active = false
 
 [node name="HUDHealthbar" type="Control" parent="Player/Camera"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 8 )
@@ -159,13 +204,14 @@ meta_underlined = false
 text = "123"
 
 [node name="HUDCompas" type="Control" parent="Player/Camera"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -444.0
-margin_top = -70.0
-margin_right = -404.0
-margin_bottom = -95.0
+margin_left = -439.089
+margin_top = -88.4161
+margin_right = -399.089
+margin_bottom = -113.416
 
 [node name="CompasBack" type="TextureRect" parent="Player/Camera/HUDCompas"]
 anchor_left = 1.0
