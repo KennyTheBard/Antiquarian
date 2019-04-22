@@ -2,12 +2,13 @@
 
 
 ### Sprint 2
-- [ ] Merge the HUD into the main game
+- [x] Merge the HUD into the main game
 - [ ] Artwork for turf textures
 - [x] Pivot offseting / billboard texture bug
 - [ ] Configuration design
 - [ ] Basic interaction (pick and gather)
-- [ ] Extend basic objects
+- [x] Extend basic objects
+- [x] Solved the overlapping tile bug
 
 ### Sprint 3
 - [ ] Menu integration
