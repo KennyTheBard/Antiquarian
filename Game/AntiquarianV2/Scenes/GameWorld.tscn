@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/GameWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -13,11 +13,9 @@
 [ext_resource path="res://Scenes/HUDMoney.gd" type="Script" id=11]
 [ext_resource path="res://Assets/acorn_money.png" type="Texture" id=12]
 [ext_resource path="res://Fonts/Dancing_Script/DancingScript-Bold.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Assets/compass_back.png" type="Texture" id=14]
-[ext_resource path="res://Assets/compass_front.png" type="Texture" id=15]
-
-
-
+[ext_resource path="res://Scenes/HUDCompass.gd" type="Script" id=14]
+[ext_resource path="res://Assets/compass_back.png" type="Texture" id=15]
+[ext_resource path="res://Assets/compass_front.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -208,7 +206,7 @@ custom_colors/default_color = Color( 0, 0, 0, 1 )
 meta_underlined = false
 text = "123"
 
-[node name="HUDCompas" type="Control" parent="Player/Camera"]
+[node name="HUDCompass" type="Control" parent="Player/Camera"]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -216,8 +214,9 @@ margin_left = -439.089
 margin_top = -88.4161
 margin_right = -399.089
 margin_bottom = -113.416
+script = ExtResource( 14 )
 
-[node name="CompasBack" type="TextureRect" parent="Player/Camera/HUDCompas"]
+[node name="CompassBack" type="TextureRect" parent="Player/Camera/HUDCompass"]
 anchor_bottom = 1.0
 margin_left = -366.374
 margin_top = -180.362
@@ -225,14 +224,14 @@ margin_right = 783.626
 margin_bottom = -105.362
 rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 734.781, 358.264 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 
-[node name="CompasFront" type="TextureRect" parent="Player/Camera/HUDCompas"]
+[node name="CompassFront" type="TextureRect" parent="Player/Camera/HUDCompass"]
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -40.0
 margin_right = 1110.0
 margin_bottom = 650.0
 rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
