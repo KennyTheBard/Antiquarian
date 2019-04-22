@@ -33,11 +33,11 @@ func create_world(world_seed) -> void:
 	
 	# prepare terrain list
 	var terrain = []
-	terrain.append(load("res://Assets/water_turf.jpg"))
-	terrain.append(load("res://Assets/forest_turf.png"))
-	terrain.append(load("res://Assets/rocky_turf.png"))
-	terrain.append(load("res://Assets/savanna_turf.png"))
-	terrain.append(load("res://Assets/mud_turf.png"))
+	terrain.append(load("res://Scenes/Tiles/Water.tscn"))
+	terrain.append(load("res://Scenes/Tiles/Grass.tscn"))
+	terrain.append(load("res://Scenes/Tiles/Rocky.tscn"))
+	terrain.append(load("res://Scenes/Tiles/Hay.tscn"))
+	terrain.append(load("res://Scenes/Tiles/Mud.tscn"))
 	
 	# generate the voronoi diagram
 	var zones = []
@@ -78,12 +78,11 @@ func create_world(world_seed) -> void:
 			world[i][j] = min_val
 	
 	# set up the tile manager
-	var tile_class = load("res://Scenes/Tile.tscn")
 	for i in range(size):
 		for j in range(size):
-			var tile = tile_class.instance()
-#			add_child(tile)
-			tile.texture = terrain[world[i][j]]
+			var tile = terrain[world[i][j]].instance()
+			# PROBLEMA: ultima textura incarcata e textura setata pentru toate
+#			tile.texture = terrain[world[i][j]]
 			tile.translation = Vector3(i, 0, j) * tile_size
 			$TileManager.add_child(tile)
 	
