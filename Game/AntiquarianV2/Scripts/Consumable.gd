@@ -12,11 +12,6 @@ func _ready():
 #	pass
 
 
-func interact():
-	print("Iteracting with Consumable")
-	pass
-
-
 func consume(user):
 	user.health += heal
 #	TODO: destory

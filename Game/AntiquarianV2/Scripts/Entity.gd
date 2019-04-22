@@ -13,6 +13,6 @@ func _process(delta):
 	pass
 
 
-func interact():
+func interact(agent):
 	print("Iteracting with Entity")
 	pass

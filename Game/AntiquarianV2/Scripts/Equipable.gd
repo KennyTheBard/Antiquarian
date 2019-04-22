@@ -13,10 +13,5 @@ func _ready():
 #	pass
 
 
-func interact():
-	print("Iteracting with Placeable")
-	pass
-
-
 func equip():
 	pass

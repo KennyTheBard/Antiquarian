@@ -25,7 +25,7 @@ func _process(delta):
 			ripe = true
 			
 
-func interact():
+func interact(agent):
 	if ripe:
 		randomize()
 		ripe = false

@@ -19,7 +19,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	
 	if Input.is_action_pressed("move_up"):
 		translation.z += speed * delta * -cos(rot)
 		translation.x += speed * delta * -sin(rot)
@@ -80,4 +79,5 @@ func _physics_process(delta):
 			obj.get_parent().interact()
 			
 			break
+	
 	pass

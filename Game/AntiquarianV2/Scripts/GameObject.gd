@@ -9,6 +9,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func interact():
+func interact(agent):
 	print("Iteracting with Game Object")
 	pass

@@ -14,6 +14,6 @@ func _ready():
 #	pass
 
 
-func interact():
+func interact(agent):
 	print("Iteracting with Prop")
 	pass

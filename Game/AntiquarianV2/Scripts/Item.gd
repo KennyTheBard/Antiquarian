@@ -16,6 +16,6 @@ func drop(pos):
 	pass
 
 
-func interact():
+func interact(agent):
 	print("Iteracting with Item")
 	pass

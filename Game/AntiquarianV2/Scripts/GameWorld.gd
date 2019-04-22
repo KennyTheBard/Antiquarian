@@ -81,8 +81,6 @@ func create_world(world_seed) -> void:
 	for i in range(size):
 		for j in range(size):
 			var tile = terrain[world[i][j]].instance()
-			# PROBLEMA: ultima textura incarcata e textura setata pentru toate
-#			tile.texture = terrain[world[i][j]]
 			tile.translation = Vector3(i, 0, j) * tile_size
 			$TileManager.add_child(tile)
 	
