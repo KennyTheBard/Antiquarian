@@ -41,7 +41,6 @@ func _process(delta):
 # Adds an item to the first non-full stack, or else first empty slot.
 # 	@return: the given item if no slot available, else null
 func add_item(item):
-	print("hop")
 	# search for same-type non-full stacks
 	for i in range(inventory_size):
 		if slots[i] != null:
