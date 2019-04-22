@@ -11,11 +11,16 @@ func _ready():
 #func _process(delta):
 #	pass
 	
-func drop(pos):
-	translation = pos
+func drop(pos, manager):
+	randomize()
+	translation = Vector3() + pos
+	translation.x += rand_range(-1, 1) 
+	translation.z += rand_range(-1, 1)
+	manager.add_child(self)
 	pass
 
 
 func interact(agent):
-	print("Iteracting with Item")
+	get_parent().remove_child(self)
+	agent.get_inventory().add_item(self)
 	pass

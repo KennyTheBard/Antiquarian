@@ -33,9 +33,6 @@ func interact(agent):
 		ripe_time = randi() % 120 + 180
 		var drop_size = randi() % (max_drop - min_drop + 1) + min_drop
 		for i in range(drop_size):
-			var drop = berry.instance()
+			var item = berry.instance()
 			var pos = translation
-			pos.x += rand_range(-1, 1) 
-			pos.z += rand_range(-1, 1)
-			drop.drop(pos)
-			get_parent().add_child(drop)
+			item.drop(pos, get_parent())

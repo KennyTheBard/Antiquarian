@@ -6,9 +6,6 @@ var speed = 5
 # value which the player is already rotated
 var rot = 0
 
-# check if the button is already pressed
-var pressed = false
-
 # the value with which the rotation will be done
 var rotate_factor = PI / 4
 
@@ -52,12 +49,7 @@ func distance_comparition(a, b):
 
 
 func _physics_process(delta):
-	if !Input.is_key_pressed(KEY_SPACE):
-		pressed = false
-		
-	if !pressed && Input.is_key_pressed(KEY_SPACE):
-		pressed = true
-		
+	if Input.is_action_just_pressed("interact"):
 		# bodies can also be used, but the other
 		# entities must be modeled with bodies
 		var objs = $InteractionZone.get_overlapping_areas()
@@ -76,8 +68,11 @@ func _physics_process(delta):
 			if obj == $Body:
 				continue
 			
-			obj.get_parent().interact()
+			obj.get_parent().interact(self)
 			
 			break
-	
 	pass
+
+
+func get_inventory():
+	return $Inventory
