@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scripts/GameWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -6,23 +6,15 @@
 [ext_resource path="res://Scenes/HUDInventory.gd" type="Script" id=4]
 [ext_resource path="res://Assets/inventory_back.png" type="Texture" id=5]
 [ext_resource path="res://Assets/inventory_front.png" type="Texture" id=6]
-[ext_resource path="res://Fonts/Dancing_Script/DancingScript-Regular.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://Scenes/HUDHealthbar.gd" type="Script" id=8]
-[ext_resource path="res://Assets/healthbar_back.png" type="Texture" id=9]
-[ext_resource path="res://Assets/healthbar_front.png" type="Texture" id=10]
-[ext_resource path="res://Scenes/HUDMoney.gd" type="Script" id=11]
-[ext_resource path="res://Assets/acorn_money.png" type="Texture" id=12]
-[ext_resource path="res://Fonts/Dancing_Script/DancingScript-Bold.ttf" type="DynamicFontData" id=13]
-[ext_resource path="res://Scenes/HUDCompass.gd" type="Script" id=14]
-[ext_resource path="res://Assets/compass_back.png" type="Texture" id=15]
-[ext_resource path="res://Assets/compass_front.png" type="Texture" id=16]
-
-[sub_resource type="DynamicFont" id=1]
-size = 20
-extra_spacing_top = 2
-extra_spacing_bottom = 2
-extra_spacing_char = 65
-font_data = ExtResource( 7 )
+[ext_resource path="res://Scenes/HUDHealthbar.gd" type="Script" id=7]
+[ext_resource path="res://Assets/healthbar_back.png" type="Texture" id=8]
+[ext_resource path="res://Assets/healthbar_front.png" type="Texture" id=9]
+[ext_resource path="res://Scenes/HUDMoney.gd" type="Script" id=10]
+[ext_resource path="res://Assets/acorn_money.png" type="Texture" id=11]
+[ext_resource path="res://Fonts/Dancing_Script/DancingScript-Bold.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Scenes/HUDCompass.gd" type="Script" id=13]
+[ext_resource path="res://Assets/compass_back.png" type="Texture" id=14]
+[ext_resource path="res://Assets/compass_front.png" type="Texture" id=15]
 
 [sub_resource type="Theme" id=2]
 
@@ -37,7 +29,7 @@ bg_color = Color( 0.6, 0.6, 0.6, 0 )
 size = 20
 extra_spacing_top = -5
 extra_spacing_char = 20
-font_data = ExtResource( 13 )
+font_data = ExtResource( 12 )
 
 [node name="GameWorld" type="Spatial"]
 script = ExtResource( 1 )
@@ -54,7 +46,6 @@ current = true
 script = ExtResource( 3 )
 
 [node name="HUDInventory" type="Control" parent="Player/Camera"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -125,26 +116,45 @@ anchor_bottom = 1.0
 rect_scale = Vector2( 0.55, 0.55 )
 texture = ExtResource( 6 )
 
-[node name="NumOfItems" type="RichTextLabel" parent="Player/Camera/HUDInventory"]
-modulate = Color( 0.678431, 0.164706, 0.164706, 1 )
-self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 150.0
-margin_top = 300.0
-margin_right = 500.0
-margin_bottom = 340.0
-grow_horizontal = 0
-grow_vertical = 0
-custom_fonts/normal_font = SubResource( 1 )
-custom_colors/default_color = Color( 0, 0, 0, 1 )
-meta_underlined = false
-text = "12345"
-scroll_active = false
-
-[node name="HUDHealthbar" type="Control" parent="Player/Camera"]
+[node name="Stacks" type="Control" parent="Player/Camera/HUDInventory"]
 editor/display_folded = true
+margin_left = 137.793
+margin_top = 307.459
+margin_right = 177.793
+margin_bottom = 347.459
+
+[node name="Stack1" type="RichTextLabel" parent="Player/Camera/HUDInventory/Stacks"]
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 8 )
+
+[node name="Stack2" type="RichTextLabel" parent="Player/Camera/HUDInventory/Stacks"]
+margin_left = 76.4251
+margin_top = -0.397217
+margin_right = 116.425
+margin_bottom = 39.6028
+
+[node name="Stack3" type="RichTextLabel" parent="Player/Camera/HUDInventory/Stacks"]
+margin_left = 152.133
+margin_top = -0.397217
+margin_right = 192.133
+margin_bottom = 39.6028
+
+[node name="Stack4" type="RichTextLabel" parent="Player/Camera/HUDInventory/Stacks"]
+margin_left = 228.425
+margin_top = 2.64075
+margin_right = 268.425
+margin_bottom = 42.6407
+
+[node name="Stack5" type="RichTextLabel" parent="Player/Camera/HUDInventory/Stacks"]
+margin_left = 304.013
+margin_top = -0.880249
+margin_right = 344.013
+margin_bottom = 39.1198
+
+[node name="HUDHealthbar" type="Control" parent="Player/Camera"]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 7 )
 
 [node name="HealthbarBack" type="TextureRect" parent="Player/Camera/HUDHealthbar"]
 anchor_left = 1.0
@@ -154,7 +164,7 @@ anchor_bottom = 1.0
 margin_left = -40.0
 margin_top = -40.0
 rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 9 )
+texture = ExtResource( 8 )
 
 [node name="HealthProgressBar" type="ProgressBar" parent="Player/Camera/HUDHealthbar"]
 light_mask = 1048575
@@ -177,12 +187,15 @@ value = 51.0
 margin_right = 1150.0
 margin_bottom = 650.0
 rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 10 )
+texture = ExtResource( 9 )
+
+[node name="Tween" type="Tween" parent="Player/Camera/HUDHealthbar"]
 
 [node name="Money" type="Control" parent="Player/Camera/HUDHealthbar"]
+editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
-script = ExtResource( 11 )
+script = ExtResource( 10 )
 
 [node name="MoneyLogo" type="TextureRect" parent="Player/Camera/HUDHealthbar/Money"]
 margin_left = 264.058
@@ -190,7 +203,7 @@ margin_top = 69.5606
 margin_right = 304.058
 margin_bottom = 109.561
 rect_scale = Vector2( 0.9, 0.9 )
-texture = ExtResource( 12 )
+texture = ExtResource( 11 )
 
 [node name="DisplayMoney" type="RichTextLabel" parent="Player/Camera/HUDHealthbar/Money"]
 modulate = Color( 0.678431, 0.164706, 0.164706, 1 )
@@ -207,6 +220,7 @@ meta_underlined = false
 text = "123"
 
 [node name="HUDCompass" type="Control" parent="Player/Camera"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -214,7 +228,7 @@ margin_left = -439.089
 margin_top = -88.4161
 margin_right = -399.089
 margin_bottom = -113.416
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 
 [node name="CompassBack" type="TextureRect" parent="Player/Camera/HUDCompass"]
 anchor_bottom = 1.0
@@ -224,7 +238,7 @@ margin_right = 783.626
 margin_bottom = -105.362
 rect_scale = Vector2( 0.5, 0.5 )
 rect_pivot_offset = Vector2( 734.781, 358.264 )
-texture = ExtResource( 15 )
+texture = ExtResource( 14 )
 
 [node name="CompassFront" type="TextureRect" parent="Player/Camera/HUDCompass"]
 anchor_left = 1.0
@@ -233,5 +247,5 @@ margin_left = -40.0
 margin_right = 1110.0
 margin_bottom = 650.0
 rect_scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
 
