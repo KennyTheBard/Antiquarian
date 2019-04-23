@@ -95,23 +95,14 @@ func create_world(world_seed) -> void:
 	for i in range(size):
 		for j in range(size):
 				var chance = randi() % 100
-
 				if chance > 80 and world[i][j] > 0:
 					# pick props depending on the terrain
 					var prop = props[world[i][j] - 1].instance()
 					
 					# placing the props in the world
 					prop.translation = Vector3(i, 0, j) * tile_size
-
-#					# enable billboarding and set the required flags
-#					var material = SpatialMaterial.new()
-#					material.set_billboard_mode(SpatialMaterial.BILLBOARD_ENABLED)
-#					material.flags_transparent = true
-#					material.params_billboard_keep_scale = true
-#					prop.get_node("./Sprite").set_material_override(material)
 					
+					# add the object into the world
 					$ObjectManager.add_child(prop)
 	
 	$Player.translation = tile_size * size / 2
-	
-	pass
