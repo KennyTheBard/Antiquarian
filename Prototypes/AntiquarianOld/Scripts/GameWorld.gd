@@ -1,7 +1,7 @@
 extends Spatial
 
 # the size a tile texture has to be scaled to
-var tile_size = Vector3(5.12, 0, 5.12)
+var tile_size = Vector3(75, 0, 75)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +14,7 @@ func _ready():
 #	pass
 
 
-func create_world(world_seed) -> void:
+func create_world(world_seed):
 	# create a seed if none is given
 	if world_seed == null:
 		randomize()
@@ -33,30 +33,31 @@ func create_world(world_seed) -> void:
 	
 	# prepare terrain list
 	var terrain = []
-	terrain.append(load("res://Scenes/Tiles/Water.tscn"))
-	terrain.append(load("res://Scenes/Tiles/Grass.tscn"))
-	terrain.append(load("res://Scenes/Tiles/Rocky.tscn"))
-	terrain.append(load("res://Scenes/Tiles/Hay.tscn"))
-	terrain.append(load("res://Scenes/Tiles/Mud.tscn"))
+	terrain.append(load("res://Assets/water_turf.jpg"))
+	terrain.append(load("res://Assets/forest_turf.png"))
+	terrain.append(load("res://Assets/sandy_turf.png"))
+	terrain.append(load("res://Assets/rocky_turf.png"))
+	terrain.append(load("res://Assets/savanna_turf.png"))
+	terrain.append(load("res://Assets/mud_turf.png"))
 	
 	# generate the voronoi diagram
 	var zones = []
 	var zones_types = []
 	var num_zones = size * 2
 	for i in range(num_zones):
-		var x = randi() % (size - 10) + 5
-		var y = randi() % (size - 10) + 5
+		var x = randi() % (size - 5) + 5
+		var y = randi() % (size - 5) + 5
 		var type = randi() % (len(terrain) - 1) + 1
 		zones.append(Vector2(x, y))
 		zones_types.append(type)
 	
 	#add border water
-	for i in range(0, size, 8):
+	for i in range(0, size, 5):
 		zones.append(Vector2(i, 0))
 		zones_types.append(0)
 		zones.append(Vector2(i, size - 1))
 		zones_types.append(0)
-	for i in range(0, size, 8):
+	for i in range(0, size, 5):
 		zones.append(Vector2(0, i))
 		zones_types.append(0)
 		zones.append(Vector2(size - 1, i))
@@ -80,29 +81,33 @@ func create_world(world_seed) -> void:
 	# set up the tile manager
 	for i in range(size):
 		for j in range(size):
-			var tile = terrain[world[i][j]].instance()
-			tile.translation = Vector3(i, 0, j) * tile_size
+			var tile = load("res://Nodes/Tile.tscn").instance()
+			tile.get_node(".").texture = terrain[world[i][j]]
+			tile.get_node(".").scale = tile_size / Vector3(tile.get_node("./").texture.get_size().x, 0, tile.get_node("./").texture.get_size().y)
+			tile.translation = Vector3(i, 0, j) * tile_size + Vector3(0, 0, 30)
 			$TileManager.add_child(tile)
-	
-	# prepare prop list
-	var props = []
-	props.append(load("res://Scenes/Props/Tree.tscn"))
-	props.append(load("res://Scenes/Props/Rock.tscn"))
-	props.append(load("res://Scenes/Props/Reeds.tscn"))
-	props.append(load("res://Scenes/Props/Berrybush.tscn"))
-	
+#	$TileManager.gamemap = world
+#	$TileManager.tiles_types = terrain
+#	$TileManager.active = true
+#
+#
 	# add props to the game world
 	for i in range(size):
 		for j in range(size):
 				var chance = randi() % 100
-				if chance > 80 and world[i][j] > 0:
-					# pick props depending on the terrain
-					var prop = props[world[i][j] - 1].instance()
-					
-					# placing the props in the world
-					prop.translation = Vector3(i, 0, j) * tile_size
-					
-					# add the object into the world
-					$ObjectManager.add_child(prop)
+
+				if chance > 80 and (world[j][i] == 1 or world[j][i] == 3):
+					var prop = load("res://Nodes/Props/Prop.tscn").instance()
+#					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
+					if world[j][i] == 1:
+						prop.get_node("./Sprite").texture = load("res://Assets/tree.png")
+	#					prop.get_node("./Sprite").set_scale(Vector2(75, 75) / prop.get_node("./Sprite").texture.get_size())
+
+					else:
+						prop.get_node("./Sprite").texture = load("res://Assets/rock.png")
+	#					prop.get_node("./Sprite").set_scale(Vector2(50, 50) / prop.get_node("./Sprite").texture.get_size())
+					prop.position = Vector2(i * 75, j * 75  + 30)
+
+					$ObjectManager.add(prop)
 	
-	$Player.translation = tile_size * size / 2
+	pass

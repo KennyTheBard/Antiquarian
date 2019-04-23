@@ -1,6 +1,8 @@
 extends "res://Scripts/Item.gd"
 
-var slotSize = Rect2()
+# Declare member variables here. Examples:
+# var a = 2
+# var b = "text"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -10,5 +12,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func place():
+
+func place(pos):
 	pass

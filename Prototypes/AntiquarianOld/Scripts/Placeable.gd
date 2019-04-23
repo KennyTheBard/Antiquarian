@@ -1,5 +1,6 @@
-extends Spatial
+extends "res://Scripts/Item.gd"
 
+var slotSize = Rect2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,6 +10,5 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func interact(agent):
-	print("Iteracting with Game Object")
+func place():
 	pass

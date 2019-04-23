@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/rock.png-f424558c80aad50edd6b527d0f995fb1.s3tc.stex"
-path.etc2="res://.import/rock.png-f424558c80aad50edd6b527d0f995fb1.etc2.stex"
+path.s3tc="res://.import/forest_turf.png-5d0a5247073d9289007a0efeca5b743b.s3tc.stex"
+path.etc2="res://.import/forest_turf.png-5d0a5247073d9289007a0efeca5b743b.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/rock.png"
-dest_files=[ "res://.import/rock.png-f424558c80aad50edd6b527d0f995fb1.s3tc.stex", "res://.import/rock.png-f424558c80aad50edd6b527d0f995fb1.etc2.stex" ]
+source_file="res://Assets/forest_turf.png"
+dest_files=[ "res://.import/forest_turf.png-5d0a5247073d9289007a0efeca5b743b.s3tc.stex", "res://.import/forest_turf.png-5d0a5247073d9289007a0efeca5b743b.etc2.stex" ]
 
 [params]
 

@@ -1,5 +1,7 @@
-extends Spatial
+extends "res://Scripts/GameObject.gd"
 
+var health = 1
+var state = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,6 +11,8 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func interact(agent):
-	print("Iteracting with Game Object")
+func create():
+	pass
+	
+func destroy():
 	pass
