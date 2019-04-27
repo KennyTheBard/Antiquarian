@@ -16,22 +16,26 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	var movement = Vector3()
+	
 	if Input.is_action_pressed("move_up"):
-		translation.z += speed * delta * -cos(rot)
-		translation.x += speed * delta * -sin(rot)
+		movement.z += speed * delta * -cos(rot)
+		movement.x += speed * delta * -sin(rot)
 		
 	if Input.is_action_pressed("move_down"):
-		translation.z += speed * delta * cos(rot)
-		translation.x += speed * delta * sin(rot)
+		movement.z += speed * delta * cos(rot)
+		movement.x += speed * delta * sin(rot)
 		
 	if Input.is_action_pressed("move_left"):
-		translation.z += speed * delta * sin(rot)
-		translation.x += speed * delta * -cos(rot)
+		movement.z += speed * delta * sin(rot)
+		movement.x += speed * delta * -cos(rot)
 		
 	if Input.is_action_pressed("move_right"):
-		translation.z += speed * delta * -sin(rot)
-		translation.x += speed * delta * cos(rot)
-		
+		movement.z += speed * delta * -sin(rot)
+		movement.x += speed * delta * cos(rot)
+	
+	translation += movement
+	
 	if Input.is_action_just_pressed("rotate_left"):
 		rotate(Vector3(0, 1, 0), rotate_factor)
 		rot += rotate_factor
