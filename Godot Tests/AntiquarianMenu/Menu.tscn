@@ -129,7 +129,6 @@ margin_right = 496.162
 margin_bottom = 393.241
 texture_normal = ExtResource( 10 )
 texture_hover = SubResource( 5 )
-
 [connection signal="pressed" from="options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Exit/exit_dialog/exit_yes" to="Exit" method="_on_exit_yes_pressed"]
