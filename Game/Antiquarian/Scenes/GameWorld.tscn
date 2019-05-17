@@ -118,7 +118,6 @@ rect_scale = Vector2( 0.55, 0.55 )
 texture = ExtResource( 6 )
 
 [node name="Stacks" type="Control" parent="Player/Camera/HUDInventory"]
-editor/display_folded = true
 margin_left = 137.793
 margin_top = 307.459
 margin_right = 177.793
