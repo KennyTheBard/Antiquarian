@@ -1,4 +1,4 @@
-extends "res://Scripts/GameObject.gd"
+extends KinematicBody
 
 # Declare member variables here. Examples:
 # var a = 2

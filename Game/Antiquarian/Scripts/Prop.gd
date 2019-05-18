@@ -1,4 +1,4 @@
-extends "res://Scripts/GameObject.gd"
+extends StaticBody
 
 # Declare member variables here. Examples:
 # var a = 2

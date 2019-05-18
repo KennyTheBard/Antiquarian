@@ -1,4 +1,4 @@
-extends "res://Scripts/GameObject.gd"
+extends Area
 
 var stack_size = 1
 

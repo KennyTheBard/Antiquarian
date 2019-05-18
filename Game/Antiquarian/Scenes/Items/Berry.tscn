@@ -18,4 +18,3 @@ script = ExtResource( 2 )
 [node name="Sprite" parent="." index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.735251, 0 )
 frames = SubResource( 1 )
-

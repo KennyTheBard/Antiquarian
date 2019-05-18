@@ -1,7 +1,7 @@
 extends "res://Scripts/Entity.gd"
 
 # movement speed
-var speed = 5
+var speed = 250
 
 # value which the player is already rotated
 var rot = 0
@@ -34,7 +34,8 @@ func _process(delta):
 		movement.z += speed * delta * -sin(rot)
 		movement.x += speed * delta * cos(rot)
 	
-	translation += movement
+	move_and_slide(movement)
+#	translation += movement
 	
 	if Input.is_action_just_pressed("rotate_left"):
 		rotate(Vector3(0, 1, 0), rotate_factor)
@@ -69,10 +70,10 @@ func _physics_process(delta):
 		objs.sort_custom(self, "distance_comparition")
 		
 		for obj in objs:
-			if obj == $Body:
+			if obj == self:
 				continue
 			
-			obj.get_parent().interact(self)
+			obj.interact(self)
 			
 			break
 	pass
