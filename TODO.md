@@ -23,7 +23,7 @@
 - [ ] ~~Merge trade system into the main game~~
 
 ## Final Sprint
-- [ ] Add resource code to each node
+- [x] Add resource code to each node
 - [x] Polish the rotation system
 - [x] Polish the world aspect
 - [ ] Improve the interaction logic
