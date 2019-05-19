@@ -43,7 +43,7 @@ func add_item(item):
 	# search for same-type non-full stacks
 	for i in range(inventory_size):
 		if slots[i] != null:
-			if slots[i] == item.get_name():
+			if slots[i] == item.resource_id:
 				if item.stack_size > len(stacks[i]):
 					stacks[i].push_back(item)
 					return null
@@ -51,7 +51,7 @@ func add_item(item):
 	# search for empty slots
 	for i in range(inventory_size):
 		if slots[i] == null:
-			slots[i] = item.get_name()
+			slots[i] = item.resource_id
 			stacks[i].push_back(item)
 			return null
 	
