@@ -6,8 +6,17 @@ var speed = 350
 # value which the player is already rotated
 var rot = 0
 
-# the value with which the rotation will be done
+# value of rotation ther player needs to have
+var trg_rot = 0
+
+# the value with which the rotation will be modified after a press
 var rotate_factor = PI / 4
+
+# the value with which the rotation will be modified after a frame
+var rotate_speed = rotate_factor / 15
+
+# the rotation floating point calculation error
+var error_threshold = 0.001
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,12 +47,19 @@ func _process(delta):
 #	translation += movement
 	
 	if Input.is_action_just_pressed("rotate_left"):
-		rotate(Vector3(0, 1, 0), rotate_factor)
-		rot += rotate_factor
+		trg_rot += rotate_factor
 	
 	if Input.is_action_just_pressed("rotate_right"):
-		rotate(Vector3(0, 1, 0), -rotate_factor)
-		rot += -rotate_factor
+		trg_rot += -rotate_factor
+	
+	if abs(rot - trg_rot) > error_threshold:
+		if rot < trg_rot:
+			rotate(Vector3(0, 1, 0), rotate_speed)
+			rot += rotate_speed
+				
+		elif rot > trg_rot:
+			rotate(Vector3(0, 1, 0), -rotate_speed)
+			rot -= rotate_speed
 	
 	pass
 
