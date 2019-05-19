@@ -9,7 +9,7 @@ var ripe_time = 0
 var ripe = true
 
 # packed scene with berry
-var berry = preload("res://Scenes/Items/Berry.tscn")
+var berry = preload("res://Scenes/Items/Consumable/Berry.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
