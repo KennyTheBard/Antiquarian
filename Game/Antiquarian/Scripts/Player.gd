@@ -18,8 +18,13 @@ var rotate_speed = rotate_factor / 15
 # the rotation floating point calculation error
 var error_threshold = 0.001
 
+# stats and attributes
+var max_health = 100
+var health
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health = max_health
 	pass # Replace with function body.
 
 
@@ -55,10 +60,12 @@ func _process(delta):
 	if abs(rot - trg_rot) > error_threshold:
 		if rot < trg_rot:
 			rotate(Vector3(0, 1, 0), rotate_speed)
+			get_node("../ObjectManager").rotate_chidlren(rotate_speed)
 			rot += rotate_speed
 				
 		elif rot > trg_rot:
 			rotate(Vector3(0, 1, 0), -rotate_speed)
+			get_node("../ObjectManager").rotate_chidlren(-rotate_speed)
 			rot -= rotate_speed
 	
 	pass
