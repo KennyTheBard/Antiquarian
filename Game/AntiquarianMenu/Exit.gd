@@ -1,25 +1,22 @@
 extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var exit_dialog
-# Called when the node enters the scene tree for the first time.
+var exit_yes
+var exit_no
+var exit_question
+
 func _ready():
 	exit_dialog = get_node("exit_dialog")
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_exit_yes_pressed():
-	#exit game
-	get_tree().quit()
-	pass # Replace with function body.
-
-
-func _on_exit_no_pressed():
+	exit_question = get_node("exit_dialog/exit_question")	
+	exit_yes = get_node("exit_dialog/exit_yes_button")
+	exit_no = get_node("exit_dialog/exit_no_button")
+	pass
+	
+func _on_exit_no_button_pressed():
 	exit_dialog.hide()
-	pass # Replace with function body.
+	get_parent().menu_dialog.show()
+	pass 
+
+func _on_exit_yes_button_pressed():
+	get_tree().quit()
+	pass 

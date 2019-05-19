@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scripts/GameWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
@@ -20,7 +20,22 @@
 size = 20
 extra_spacing_top = 2
 extra_spacing_bottom = 2
-extra_spacing_char = 65
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 20
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 20
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
 font_data = ExtResource( 7 )
 
 [sub_resource type="Theme" id=2]
@@ -53,6 +68,7 @@ current = true
 script = ExtResource( 3 )
 
 [node name="HUDInventory" type="Control" parent="Player/Camera"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -78,20 +94,56 @@ anchor_bottom = 1.0
 rect_scale = Vector2( 0.55, 0.55 )
 texture = ExtResource( 6 )
 
-[node name="NumOfItems" type="RichTextLabel" parent="Player/Camera/HUDInventory"]
+[node name="Item0" type="RichTextLabel" parent="Player/Camera/HUDInventory"]
 modulate = Color( 0.678431, 0.164706, 0.164706, 1 )
 self_modulate = Color( 0, 0, 0, 1 )
-margin_left = 150.0
-margin_top = 300.0
-margin_right = 500.0
-margin_bottom = 340.0
+margin_left = 123.715
+margin_top = 304.452
+margin_right = 155.715
+margin_bottom = 331.452
 grow_horizontal = 0
 grow_vertical = 0
 custom_fonts/normal_font = SubResource( 1 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 meta_underlined = false
-text = "12345"
+text = "1"
 scroll_active = false
+
+[node name="Item1" type="RichTextLabel" parent="Player/Camera/HUDInventory"]
+margin_left = 200.547
+margin_top = 308.0
+margin_right = 240.547
+margin_bottom = 335.0
+custom_fonts/normal_font = SubResource( 8 )
+custom_colors/default_color = Color( 0.0235294, 0.0235294, 0.0235294, 1 )
+text = "45"
+
+[node name="Item2" type="RichTextLabel" parent="Player/Camera/HUDInventory"]
+margin_left = 279.0
+margin_top = 308.0
+margin_right = 319.0
+margin_bottom = 334.0
+custom_fonts/normal_font = SubResource( 9 )
+custom_colors/default_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+text = "15"
+
+[node name="Item3" type="RichTextLabel" parent="Player/Camera/HUDInventory"]
+margin_left = 352.774
+margin_top = 307.774
+margin_right = 392.774
+margin_bottom = 334.774
+custom_fonts/normal_font = SubResource( 6 )
+custom_colors/default_color = Color( 0.054902, 0.0509804, 0.0509804, 1 )
+text = "23"
+
+[node name="Item4" type="RichTextLabel" parent="Player/Camera/HUDInventory"]
+margin_left = 429.452
+margin_top = 306.679
+margin_right = 468.452
+margin_bottom = 335.679
+custom_fonts/normal_font = SubResource( 7 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+text = "2"
 
 [node name="HUDHealthbar" type="Control" parent="Player/Camera"]
 margin_right = 40.0
@@ -121,7 +173,7 @@ margin_bottom = 15.0
 theme = SubResource( 2 )
 custom_styles/fg = SubResource( 3 )
 custom_styles/bg = SubResource( 4 )
-custom_colors/font_color = Color( 0, 0, 0, 0 )
+custom_colors/font_color = Color( 0.141176, 0.0392157, 0.0392157, 0 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 0 )
 value = 51.0
 
@@ -157,6 +209,8 @@ custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 meta_underlined = false
 text = "123"
+
+[node name="Tween" type="Tween" parent="Player/Camera/HUDHealthbar"]
 
 [node name="HUDCompas" type="Control" parent="Player/Camera"]
 anchor_left = 1.0

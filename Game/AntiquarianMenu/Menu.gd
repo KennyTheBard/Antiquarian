@@ -1,29 +1,33 @@
 extends Node2D
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var exit_dialog
 var options_dialog
-# Called when the node enters the scene tree for the first time.
+var menu_dialog
+
 func _ready():
+	get_node("menu_dialog/title").get("custom_fonts/font").set_size(75)
+
+	menu_dialog = get_node("menu_dialog")
+	menu_dialog.show()
+		
 	exit_dialog = get_node("Exit/exit_dialog")
 	exit_dialog.hide()
 	
 	options_dialog = get_node("Options/option_dialog")
 	options_dialog.hide()
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
-func _on_exit_pressed():
+	pass
+	
+func _on_exit_button_pressed():
 	exit_dialog.show()
-	pass # Replace with function body.
+	menu_dialog.hide()
+	pass 
 
-
-func _on_options_pressed():
+func _on_options_button_pressed():
 	options_dialog.show()
-	pass # Replace with function body.
+	menu_dialog.hide()
+	pass 
+
+func _on_continue_button_pressed():
+	pass 
+
+func _on_new_game_button_pressed():
+	pass 

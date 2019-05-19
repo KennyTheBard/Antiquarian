@@ -1,63 +1,50 @@
 extends Node
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var audio
 var video
 var control
 var interface
+var options
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	audio = get_node("audio")
 	video = get_node("video")
 	control = get_node("control")
 	interface = get_node("interface")
+	options = get_node("option_dialog")
 	
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 func _on_audio_button_pressed():
 	audio.show()
-
+	options.hide()
 
 func _on_video_button_pressed():
 	video.show()
-
+	options.hide()
 
 func _on_control_button_pressed():
 	control.show()
-
+	options.hide()
 
 func _on_interface_button_pressed():
 	interface.show()
-
-
+	options.hide()
 
 func _on_option_dialog_back_pressed():
-	get_node("option_dialog").hide()
-
-
+	options.hide()
+	get_parent().menu_dialog.show()
 
 func _on_audio_back_pressed():
-	get_node("audio").hide()
-
-
-
+	audio.hide()
+	options.show()
+	
 func _on_control_back_pressed():
-	get_node("control").hide()
-
-
+	control.hide()
+	options.show()
 
 func _on_interface_back_pressed():
-	get_node("interface").hide()	
-
-
+	interface.hide()
+	options.show()
 
 func _on_video_back_pressed():
-	get_node("video").hide()	
-
+	video.hide()
+	options.show()
