@@ -26,8 +26,8 @@
 - [x] Add resource code to each node
 - [x] Polish the rotation system
 - [x] Polish the world aspect
-- [ ] Improve the interaction logic
-- [ ] Configuration design
+- [ ] ~~Improve the interaction logic~~
+- [x] Configuration design
 - [x] Complete the menu
 - [x] Menu integration
 - [ ] Simple AI for Monster
