@@ -29,5 +29,5 @@
 - [ ] Improve the interaction logic
 - [ ] Configuration design
 - [x] Complete the menu
-- [ ] Menu integration
+- [x] Menu integration
 - [ ] Simple AI for Monster
