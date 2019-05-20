@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scenes/Tiles/Tile.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Tile.gd" type="Script" id=1]
+
 
 [sub_resource type="SpatialMaterial" id=1]
 flags_unshaded = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Scripts/GameWorld.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/ObjectManager.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Scripts/HUDCompass.gd" type="Script" id=14]
 [ext_resource path="res://Assets/compass_back.png" type="Texture" id=15]
 [ext_resource path="res://Assets/compass_front.png" type="Texture" id=16]
+[ext_resource path="res://Scenes/Entities/Monster.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Theme" id=1]
 
@@ -41,6 +42,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 
 [node name="Camera" type="Camera" parent="Player"]
 transform = Transform( 1, 0, 0, 0, 0.484071, 0.875029, 0, -0.875029, 0.484071, 0, 9.365, 3.40015 )
@@ -251,3 +253,5 @@ margin_right = 1110.0
 margin_bottom = 650.0
 rect_scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 16 )
+
+[node name="Monster" parent="." instance=ExtResource( 17 )]

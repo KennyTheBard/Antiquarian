@@ -95,3 +95,6 @@ func create_world(world_seed) -> void:
 					$ObjectManager.add_child(prop)
 	
 	$Player.translation = tile_size * size / 2
+	
+	var angle = randf()
+	$Monster.translation = tile_size * size / 2 + tile_size * size / 8 * Vector3(sin(angle), 0, cos(angle))
