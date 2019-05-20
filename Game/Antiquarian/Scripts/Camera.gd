@@ -15,6 +15,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	
+	# --------------------------------------------
+	# DEBUGGING STUFF
 	if Input.is_key_pressed(KEY_KP_8):
 		translation.z += speed * delta * -cos(rot)
 		translation.x += speed * delta * -sin(rot)
@@ -50,5 +53,6 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_KP_9):
 		rotate(Vector3(0, 1, 0), -rotate_factor * delta)
 		rot += -rotate_factor * delta
+	# --------------------------------------------
 		
 	pass

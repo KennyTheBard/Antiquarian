@@ -4,7 +4,7 @@ extends Control
 # var a = 2
 # var b = "text"
 var health
-var value = 100
+
 var tween
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,8 +16,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	health.set_value(value)	
-	value -= delta
+	health.set_value(get_parent().get_parent().health)	
+
 	pass
 
 func _on_Tween_tween_step( object, key, value ):

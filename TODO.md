@@ -11,18 +11,23 @@
 - [x] Solved the overlapping tile bug
 
 ### Sprint 3
-- [ ] LEFTOVER: Artwork for turf textures
-- [ ] LEFTOVER: Configuration design
-- [ ] Add resource code to each node
-- [ ] Menu integration
-- [ ] Sound effects
-- [ ] Interaction with props
-- [ ] Internal state machine for objects
-- [ ] Attack with weapons
-- [ ] Simple AI for NPCs
-- [ ] Merge trade system into the main game
+- [x] LEFTOVER: Artwork for turf textures
+- [ ] ~~LEFTOVER: Configuration design~~
+- [ ] ~~Add resource code to each node~~
+- [ ] ~~Menu integration~~
+- [ ] ~~Sound effects~~
+- [x] Interaction with props
+- [ ] ~~Internal state machine for objects~~
+- [ ] ~~Attack with weapons~~
+- [ ] ~~Simple AI for Monster~~
+- [ ] ~~Merge trade system into the main game~~
 
 ## Final Sprint
-- [ ] Animations for player
-- [ ] Animations for NPC
-- [ ] Animations for monster
+- [x] Add resource code to each node
+- [x] Polish the rotation system
+- [x] Polish the world aspect
+- [ ] Improve the interaction logic
+- [ ] Configuration design
+- [x] Complete the menu
+- [ ] Menu integration
+- [ ] Simple AI for Monster

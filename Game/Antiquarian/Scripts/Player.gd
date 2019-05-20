@@ -1,16 +1,30 @@
 extends "res://Scripts/Entity.gd"
 
 # movement speed
-var speed = 5
+var speed = 350
 
 # value which the player is already rotated
 var rot = 0
 
-# the value with which the rotation will be done
+# value of rotation ther player needs to have
+var trg_rot = 0
+
+# the value with which the rotation will be modified after a press
 var rotate_factor = PI / 4
+
+# the value with which the rotation will be modified after a frame
+var rotate_speed = rotate_factor / 15
+
+# the rotation floating point calculation error
+var error_threshold = 0.001
+
+# stats and attributes
+var max_health = 100
+var health
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	health = max_health
 	pass # Replace with function body.
 
 
@@ -34,15 +48,25 @@ func _process(delta):
 		movement.z += speed * delta * -sin(rot)
 		movement.x += speed * delta * cos(rot)
 	
-	translation += movement
+	move_and_slide(movement)
+#	translation += movement
 	
 	if Input.is_action_just_pressed("rotate_left"):
-		rotate(Vector3(0, 1, 0), rotate_factor)
-		rot += rotate_factor
+		trg_rot += rotate_factor
 	
 	if Input.is_action_just_pressed("rotate_right"):
-		rotate(Vector3(0, 1, 0), -rotate_factor)
-		rot += -rotate_factor
+		trg_rot += -rotate_factor
+	
+	if abs(rot - trg_rot) > error_threshold:
+		if rot < trg_rot:
+			rotate(Vector3(0, 1, 0), rotate_speed)
+			get_node("../ObjectManager").rotate_chidlren(rotate_speed)
+			rot += rotate_speed
+				
+		elif rot > trg_rot:
+			rotate(Vector3(0, 1, 0), -rotate_speed)
+			get_node("../ObjectManager").rotate_chidlren(-rotate_speed)
+			rot -= rotate_speed
 	
 	pass
 
@@ -69,10 +93,10 @@ func _physics_process(delta):
 		objs.sort_custom(self, "distance_comparition")
 		
 		for obj in objs:
-			if obj == $Body:
+			if obj == self:
 				continue
 			
-			obj.get_parent().interact(self)
+			obj.interact(self)
 			
 			break
 	pass

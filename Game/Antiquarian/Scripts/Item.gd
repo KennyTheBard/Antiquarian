@@ -1,9 +1,11 @@
-extends "res://Scripts/GameObject.gd"
+extends Area
 
 var stack_size = 1
+var resource_id = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Sprite.rotate(Vector3(1, 0, 0), PI / 180 * -25)
 	pass # Replace with function body.
 
 
