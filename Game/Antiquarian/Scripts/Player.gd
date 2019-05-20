@@ -60,12 +60,14 @@ func _process(delta):
 	if abs(rot - trg_rot) > error_threshold:
 		if rot < trg_rot:
 			rotate(Vector3(0, 1, 0), rotate_speed)
-			get_node("../ObjectManager").rotate_chidlren(rotate_speed)
+			get_node("../ObjectManager").rotate_children(rotate_speed)
+			get_node("../Monster").rotate(Vector3(0, 1, 0), rotate_speed)
 			rot += rotate_speed
 				
 		elif rot > trg_rot:
 			rotate(Vector3(0, 1, 0), -rotate_speed)
-			get_node("../ObjectManager").rotate_chidlren(-rotate_speed)
+			get_node("../ObjectManager").rotate_children(-rotate_speed)
+			get_node("../Monster").rotate(Vector3(0, 1, 0), -rotate_speed)
 			rot -= rotate_speed
 	
 	pass

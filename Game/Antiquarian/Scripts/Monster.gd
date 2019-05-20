@@ -21,7 +21,7 @@ func _physics_process(delta):
 	
 	for body in bodies:
 		if body == player:
-			player.health -= damage
+			player.health -= damage * delta
 		
 		# this means it is a prop
 		if body.has_method("destroy"):

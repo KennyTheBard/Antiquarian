@@ -9,6 +9,6 @@ func _ready():
 	pass # Replace with function body.
 
 
-func rotate_chidlren(value):
+func rotate_children(value):
 	for node in get_children():
 		node.get_node("Sprite").rotate(Vector3(0, 1, 0), value)
