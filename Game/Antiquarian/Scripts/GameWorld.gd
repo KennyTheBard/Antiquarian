@@ -5,21 +5,10 @@ var tile_size = Vector3(5.12, 0, 5.12)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	create_world(null)
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 func create_world(world_seed) -> void:
-	# create a seed if none is given
-	if world_seed == null:
-		randomize()
-		world_seed = randi()
-	
 	# set the seed
 	seed(world_seed)
 	

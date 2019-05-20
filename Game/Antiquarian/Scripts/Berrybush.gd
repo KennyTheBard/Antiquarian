@@ -1,8 +1,8 @@
 extends "res://Scripts/Prop.gd"
 
 # regeneration parameters
-var min_ripe_time = 120
-var max_ripe_time = 180
+var min_ripe_time = 3
+var max_ripe_time = 4
 var min_drop = 1
 var max_drop = 3
 var ripe_time = 0
@@ -22,15 +22,16 @@ func _process(delta):
 		ripe_time -= delta
 		if ripe_time <= 0:
 			ripe_time = 0
+			$Sprite.play("Full")
 			ripe = true
-			
+
 
 func interact(agent):
 	if ripe:
 		randomize()
 		ripe = false
 		$Sprite.play("Empty")
-		ripe_time = randi() % 120 + 180
+		ripe_time = randi() % (max_ripe_time - min_ripe_time) + min_ripe_time
 		var drop_size = randi() % (max_drop - min_drop + 1) + min_drop
 		for i in range(drop_size):
 			var item = berry.instance()
