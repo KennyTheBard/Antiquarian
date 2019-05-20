@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Props/Prop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scripts/Berrybush.gd" type="Script" id=2]
+[ext_resource path="res://Assets/bush_full.png" type="Texture" id=3]
+[ext_resource path="res://Assets/bush_empty.png" type="Texture" id=4]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "Full",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Empty",
+"speed": 5.0
+} ]
+
+[node name="Berrybush" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215696, 1.8983, 0 )
+frames = SubResource( 1 )
+animation = "Full"

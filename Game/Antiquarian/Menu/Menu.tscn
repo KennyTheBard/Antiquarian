@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Menu/wallpaper.jpg" type="Texture" id=1]
+[ext_resource path="res://Menu/menu/title_b.png" type="Texture" id=2]
+[ext_resource path="res://Menu/menu/buttons/exit.png" type="Texture" id=3]
+
+[sub_resource type="ImageTexture" id=1]
+
+[node name="Menu" type="Control"]
+
+[node name="Background" type="TextureRect" parent="."]
+margin_right = 1028.0
+margin_bottom = 604.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MainMenu" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Title" type="TextureRect" parent="MainMenu"]
+margin_left = 196.063
+margin_top = 27.6175
+margin_right = 832.063
+margin_bottom = 217.617
+texture = ExtResource( 2 )
+expand = true
+
+[node name="New Game" type="TextureButton" parent="MainMenu"]
+margin_left = 419.508
+margin_top = 265.158
+margin_right = 600.508
+margin_bottom = 306.158
+texture_hover = SubResource( 1 )
+
+[node name="Label" type="Label" parent="MainMenu/New Game"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "sasdsad"
+
+[node name="Exit" type="TextureButton" parent="MainMenu"]
+margin_left = 467.524
+margin_top = 383.76
+margin_right = 534.524
+margin_bottom = 423.76
+texture_normal = ExtResource( 3 )
+
+[node name="Options" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Options"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Options"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="TextureButton2" type="TextureButton" parent="Options"]
+margin_right = 40.0
+margin_bottom = 40.0
