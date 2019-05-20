@@ -46,7 +46,7 @@ func continue_option():
 
 
 func start_game(world_seed):
-	var game_world = load("res://Scenes/GameWorld.tscn").instance()
+	var game_world = preload("res://Scenes/GameWorld.tscn").instance()
 	game_world.create_world(world_seed)
 	menu_dialog.hide()
 	bg.hide()
