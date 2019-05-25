@@ -3,7 +3,6 @@ onready var exit_dialog 	= get_node("Exit/exit_dialog")
 onready var options_dialog 	= get_node("Options/option_dialog")
 onready var menu_dialog 	= get_node("menu_dialog")
 onready var bg 				= get_node("wallpaper")
-onready var gameover 		= get_node("GameOver/gameover_dialog")
 
 func _ready():
 	get_node("menu_dialog/title").get("custom_fonts/font").set_size(75)
@@ -69,7 +68,3 @@ func load_data():
 	var content = file.get_as_text()
 	file.close()
 	return int(content)
-
-func _on_back_to_the_mainmenu_pressed():
-	gameover.hide()
-	menu_dialog.show()

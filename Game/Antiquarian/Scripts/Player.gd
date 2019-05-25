@@ -30,9 +30,6 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if health < 0:
-		health = 0
-	
 	var movement = Vector3()
 	
 	if Input.is_action_pressed("move_up"):
