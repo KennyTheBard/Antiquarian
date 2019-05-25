@@ -15,7 +15,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="AntiquarianV2"
+config/name="Antiquarian"
 run/main_scene="res://Menu/Menu.tscn"
 config/icon="res://icon.png"
 
