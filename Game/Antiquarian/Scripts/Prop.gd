@@ -11,7 +11,7 @@ func _ready():
 #	pass
 
 func destroy():
-	get_parent().remove_child(self)
+	queue_free()
 
 
 func interact(agent):

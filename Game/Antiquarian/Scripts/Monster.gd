@@ -25,6 +25,6 @@ func _physics_process(delta):
 		
 		# this means it is a prop
 		if body.has_method("destroy"):
-#			body.destroy()
+			body.destroy()
 			break
 

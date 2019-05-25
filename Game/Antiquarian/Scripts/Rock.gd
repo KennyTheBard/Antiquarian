@@ -17,4 +17,4 @@ func destroy():
 		var item = stone.instance()
 		var pos = translation
 		item.drop(pos, get_parent())
-	get_parent().remove_child(self)
+	.destroy()
