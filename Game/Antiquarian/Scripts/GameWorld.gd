@@ -7,6 +7,12 @@ var tile_size = Vector3(5.12, 0, 5.12)
 func _ready():
 	pass # Replace with function body.
 
+func _process(delta):
+	print($Player.health)
+	if round($Player.health) == 0:
+		get_tree().current_scene.bg.show()
+		get_tree().current_scene.gameover.show()
+		queue_free()
 
 func create_world(world_seed) -> void:
 	# set the seed
